@@ -26,57 +26,88 @@ class _StoreDetailState extends State<StoreDetail> {
         toolbarHeight: 44,
         backgroundColor: Colors.amber,
       ),
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            floating: true,
-            pinned: true,
-            expandedHeight: 100,
-            title: Padding(
-              padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Container(
-                          height: 35,
-                          child: TextField(
-                            style: TextStyle(fontSize: 12),
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: BorderSide(color: Colors.black),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.black),
-                              ),
-                              labelText: 'Input something',
-                              labelStyle: TextStyle(fontSize: 12),
-                              contentPadding: EdgeInsets.symmetric(
-                                  vertical: 5, horizontal: 10),
-                            ),
-                          ),
-                        ),
+      body: Column(
+        children: [
+          SizedBox(
+            height: 70,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  width: 200,
+                  height: 40,
+                  child: TextField(
+                    style: TextStyle(fontSize: 14),
+                    decoration: InputDecoration(
+                      labelText: 'Input Here',
+                      labelStyle: TextStyle(fontSize: 14),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
                       ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Container(
-                        width: 35,
-                        height: 35,
-                        child: Icon(Icons.search),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.amber,
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
-                ],
-              ),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Container(
+                  width: 40,
+                  height: 40,
+                  child: Icon(
+                    Icons.search,
+                  ),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.amber,
+                  ),
+                ),
+              ],
             ),
           ),
+          Container(
+            height: 225,
+            width: 250,
+            child: Stack(
+              children: [
+                Container(
+                  width: 250,
+                  height: 150,
+                  decoration: BoxDecoration(
+                    color: Colors.amber,
+                    borderRadius: BorderRadius.circular(30),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.3),
+                        offset: Offset(0, 4),
+                        blurRadius: 6,
+                        spreadRadius: 1,
+                      )
+                    ],
+                  ),
+                ),
+                Positioned(
+                  top: 100,
+                  left: 25,
+                  child: Container(
+                    width: 200,
+                    height: 125,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(30),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          offset: Offset(0, 4),
+                          blurRadius: 6,
+                          spreadRadius: 1,
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          )
         ],
       ),
     );
