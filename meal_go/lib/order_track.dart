@@ -9,6 +9,25 @@ class OrderTrack extends StatefulWidget {
 }
 
 class _OrderDetailstate extends State<OrderTrack> {
+  LocationService locationService = LocationService();
+  double lat = 0.0;
+  double lng = 0.0;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getlocation();
+  }
+
+  Future<void> getlocation() async {
+    await locationService.getCurrentLocation();
+    setState(() {
+      lat = locationService.lat;
+      lng = locationService.lng;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,51 +50,18 @@ class _OrderDetailstate extends State<OrderTrack> {
         children: [
           SizedBox(
             height: 70,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [],
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('lat : $lat'),
+                  Text('lng : $lng'),
+                ],
+              ),
             ),
           ),
           Container()
         ],
-      ),
-    );
-  }
-}
-
-class LocationWidget extends StatefulWidget {
-  const LocationWidget({super.key});
-  @override
-  State<LocationWidget> createState() => _LocationWidgetState();
-}
-
-class _LocationWidgetState extends State<LocationWidget> {
-  LocationService locationService = LocationService();
-  double lat = 0.0;
-  double lng = 0.0;
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('Lat: $lat'),
-              Text('Lng: $lng'),
-            ],
-          ),
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          await locationService.getCurrentLocation();
-          setState(() {
-            lat = locationService.lat;
-            lng = locationService.lng;
-          });
-        },
-        child: const Icon(Icons.navigation),
       ),
     );
   }
