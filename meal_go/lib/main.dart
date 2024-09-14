@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meal_go/home.dart';
 import 'package:meal_go/restaurant.dart';
 
 void main() {
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       title: 'Meal Go',
       debugShowCheckedModeBanner: false,
-      home: StoreDetail(),
+      home: HomePage(),
     );
   }
 }
