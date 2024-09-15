@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
         children: [
           // App Bar Widget
           Padding(
-            padding: EdgeInsets.symmetric(
+            padding: const EdgeInsets.symmetric(
               vertical: 15,
               horizontal: 15,
             ),
@@ -58,7 +58,7 @@ class HomePage extends StatelessWidget {
 
           // Search
           Padding(
-            padding: EdgeInsets.symmetric(
+            padding: const EdgeInsets.symmetric(
               vertical: 10,
               horizontal: 10,
             ),
@@ -77,7 +77,7 @@ class HomePage extends StatelessWidget {
                     )
                   ]),
               child: Padding(
-                padding: EdgeInsets.symmetric(
+                padding: const EdgeInsets.symmetric(
                   horizontal: 10,
                 ),
                 child: Row(
@@ -87,11 +87,11 @@ class HomePage extends StatelessWidget {
                       height: 50,
                       width: 300,
                       child: Padding(
-                        padding: EdgeInsets.symmetric(
+                        padding: const EdgeInsets.symmetric(
                           horizontal: 15,
                         ),
                         child: TextFormField(
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             hintText: "Mau mamam apa hari ini?",
                             border: InputBorder.none,
                           ),
@@ -106,7 +106,7 @@ class HomePage extends StatelessWidget {
           ),
 
           // category
-          Padding(
+          const Padding(
             padding: EdgeInsets.only(top: 20, left: 10),
             child: Text(
               "Categories",
@@ -239,8 +239,74 @@ class HomePage extends StatelessWidget {
             ),
           ),
 
+          // Deals section
+          Container(
+            margin: const EdgeInsets.symmetric(
+              horizontal: 15,
+            ),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 25,
+              vertical: 10,
+            ),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              gradient: const LinearGradient(
+                colors: [Colors.orange, Colors.white],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+            ),
+            width: double.maxFinite,
+            child: Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    padding: EdgeInsets.only(left: 4),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(
+                          width: 170,
+                          child: Text("Special Deals \nFor Today",
+                              maxLines: 6,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white)),
+                        ),
+                        SizedBox(height: 6),
+                        ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.red,
+                            minimumSize: Size(60, 30),
+                          ),
+                          child: const Text(
+                            "Buy Now",
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.asset(
+                    'assets/burger.png',
+                    height: 100,
+                    width: 100,
+                  ),
+                )
+              ],
+            ),
+          ),
+
           // Popular Items
-          Padding(
+          const Padding(
             padding: EdgeInsets.only(top: 20, left: 10),
             child: Text(
               "Popular",
@@ -284,20 +350,20 @@ class HomePage extends StatelessWidget {
                                   height: 100,
                                 ),
                               ),
-                              Text(
+                              const Text(
                                 "Burger",
                                 style: TextStyle(
                                     fontSize: 20, fontWeight: FontWeight.bold),
                               ),
                               SizedBox(height: 4),
-                              Text(
+                              const Text(
                                 "Roti burger, daging, sayur",
                                 style: TextStyle(
                                   fontSize: 15,
                                 ),
                               ),
                               SizedBox(height: 12),
-                              Row(
+                              const Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
@@ -345,20 +411,20 @@ class HomePage extends StatelessWidget {
                                   height: 100,
                                 ),
                               ),
-                              Text(
+                              const Text(
                                 "Burger",
                                 style: TextStyle(
                                     fontSize: 20, fontWeight: FontWeight.bold),
                               ),
                               SizedBox(height: 4),
-                              Text(
+                              const Text(
                                 "Roti burger, daging, sayur",
                                 style: TextStyle(
                                   fontSize: 15,
                                 ),
                               ),
                               SizedBox(height: 12),
-                              Row(
+                              const Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
@@ -406,20 +472,20 @@ class HomePage extends StatelessWidget {
                                   height: 100,
                                 ),
                               ),
-                              Text(
+                              const Text(
                                 "Burger",
                                 style: TextStyle(
                                     fontSize: 20, fontWeight: FontWeight.bold),
                               ),
                               SizedBox(height: 4),
-                              Text(
+                              const Text(
                                 "Roti burger, daging, sayur",
                                 style: TextStyle(
                                   fontSize: 15,
                                 ),
                               ),
                               SizedBox(height: 12),
-                              Row(
+                              const Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
@@ -467,20 +533,20 @@ class HomePage extends StatelessWidget {
                                   height: 100,
                                 ),
                               ),
-                              Text(
+                              const Text(
                                 "Burger",
                                 style: TextStyle(
                                     fontSize: 20, fontWeight: FontWeight.bold),
                               ),
                               SizedBox(height: 4),
-                              Text(
+                              const Text(
                                 "Roti burger, daging, sayur",
                                 style: TextStyle(
                                   fontSize: 15,
                                 ),
                               ),
                               SizedBox(height: 12),
-                              Row(
+                              const Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
