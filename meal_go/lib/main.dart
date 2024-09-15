@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meal_go/restaurant.dart';
+import 'package:meal_go/screen/sign_in/sign_in_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,9 +13,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      title: 'Meal Go',
-      debugShowCheckedModeBanner: false,
-      home: StoreDetail(),
-    );
+        title: 'Meal Go', debugShowCheckedModeBanner: false, home: SignIn()
+        // home: StoreDetail(),
+        );
   }
 }
