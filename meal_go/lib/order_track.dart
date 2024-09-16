@@ -14,6 +14,7 @@ class _OrderDetailstate extends State<OrderTrack> {
   LocationService locationService = LocationService();
   double lat = 0.0;
   double lng = 0.0;
+  bool loading = true;
 
   @override
   void initState() {
@@ -26,6 +27,7 @@ class _OrderDetailstate extends State<OrderTrack> {
     setState(() {
       lat = locationService.lat;
       lng = locationService.lng;
+      loading = false;
     });
   }
 
@@ -47,22 +49,55 @@ class _OrderDetailstate extends State<OrderTrack> {
         toolbarHeight: 40,
         backgroundColor: const Color.fromARGB(255, 253, 224, 171),
       ),
-      body: Stack(
-        children: [
-          FlutterMap(
-            options: MapOptions(
-              center: LatLng(lat, lng),
-              zoom: 3.2,
+      body: loading
+          ? Center(
+              child: CircularProgressIndicator(),
+            )
+          : Stack(
+              children: [
+                FlutterMap(
+                  options: MapOptions(
+                    center: LatLng(lat, lng),
+                    zoom: 13.2,
+                  ),
+                  children: [
+                    TileLayer(
+                      urlTemplate:
+                          'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                      userAgentPackageName: 'com.example.app',
+                    ),
+                    MarkerLayer(
+                      markers: [
+                        Marker(
+                          point: LatLng(lat, lng),
+                          width: 80,
+                          height: 80,
+                          builder: (context) => Icon(
+                            Icons.location_on,
+                            color: Colors.red,
+                            size: 40,
+                          ),
+                        ),
+                      ],
+                    ),
+                    MarkerLayer(
+                      markers: [
+                        Marker(
+                          point: LatLng(40.752596717129805, -73.98730215796661),
+                          width: 80,
+                          height: 80,
+                          builder: (context) => Icon(
+                            Icons.location_on,
+                            color: Colors.blue,
+                            size: 40,
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ],
             ),
-            children: [
-              TileLayer(
-                urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                userAgentPackageName: 'com.example.app',
-              ),
-            ],
-          ),
-        ],
-      ),
     );
   }
 }
