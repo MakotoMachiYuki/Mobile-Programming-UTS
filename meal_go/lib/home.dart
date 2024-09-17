@@ -8,6 +8,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: ListView(
         children: [
           // App Bar Widget
@@ -63,44 +64,52 @@ class HomePage extends StatelessWidget {
               vertical: 10,
               horizontal: 10,
             ),
-            child: Container(
-              width: double.infinity,
-              height: 50,
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 2,
-                      blurRadius: 10,
-                      offset: Offset(0, 3),
-                    )
-                  ]),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 10,
-                ),
-                child: Row(
-                  children: [
-                    Icon(CupertinoIcons.search, color: Colors.orange),
-                    Container(
-                      height: 50,
-                      width: 300,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 15,
-                        ),
-                        child: TextFormField(
-                          decoration: const InputDecoration(
-                            hintText: "Mau mamam apa hari ini?",
-                            border: InputBorder.none,
+            child: InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, '/searchfood');
+              },
+              child: Container(
+                width: double.infinity,
+                height: 50,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 2,
+                        blurRadius: 10,
+                        offset: Offset(0, 3),
+                      )
+                    ]),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10,
+                  ),
+                  child: Row(
+                    children: [
+                      Icon(CupertinoIcons.search, color: Colors.orange),
+                      Container(
+                        height: 50,
+                        width: 300,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 15,
+                          ),
+                          child: TextFormField(
+                            onFieldSubmitted: (value) {
+                              Navigator.pushNamed(context, '/searchfood');
+                            },
+                            decoration: const InputDecoration(
+                              hintText: "Mau mamam apa hari ini?",
+                              border: InputBorder.none,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    Icon(Icons.filter_list),
-                  ],
+                      Icon(Icons.filter_list),
+                    ],
+                  ),
                 ),
               ),
             ),
