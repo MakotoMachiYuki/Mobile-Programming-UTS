@@ -78,10 +78,6 @@ class _OrderDetailstate extends State<OrderTrack> {
                             size: 40,
                           ),
                         ),
-                      ],
-                    ),
-                    MarkerLayer(
-                      markers: [
                         Marker(
                           point: LatLng(40.752596717129805, -73.98730215796661),
                           width: 80,
@@ -93,8 +89,70 @@ class _OrderDetailstate extends State<OrderTrack> {
                           ),
                         ),
                       ],
-                    )
+                    ),
                   ],
+                ),
+                SizedBox.expand(
+                  child: DraggableScrollableSheet(
+                    initialChildSize: 0.10,
+                    minChildSize: 0.09,
+                    maxChildSize: 0.8,
+                    builder: (BuildContext context,
+                        ScrollController scrollController) {
+                      return Container(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 15,
+                          vertical: 10,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(20.0),
+                            topRight: Radius.circular(20.0),
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey,
+                              blurRadius: 10.0,
+                            )
+                          ],
+                        ),
+                        child: ListView(
+                          controller: scrollController,
+                          children: <Widget>[
+                            Center(
+                              child: Container(
+                                height: 8,
+                                width: 50,
+                                decoration: BoxDecoration(
+                                  color: Colors.grey,
+                                  borderRadius: BorderRadius.circular(5),
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: 20),
+                            Text(
+                              "Order Details",
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(height: 10),
+                            ListTile(
+                              leading: Icon(Icons.restaurant_menu),
+                              title: Text("Restaurant: Burger King"),
+                              subtitle: Text("Estimated delivery time: 15 min"),
+                            ),
+                            ListTile(
+                              leading: Icon(Icons.food_bank),
+                              title: Text("Your order: 2x ayam bakar"),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ],
             ),
