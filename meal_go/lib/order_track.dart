@@ -148,6 +148,12 @@ class _OrderDetailstate extends State<OrderTrack> {
                               leading: Icon(Icons.food_bank),
                               title: Text("Your order: 2x ayam bakar"),
                             ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            ElevatedButton(
+                                onPressed: () {},
+                                child: const Text('cancel order'))
                           ],
                         ),
                       );
