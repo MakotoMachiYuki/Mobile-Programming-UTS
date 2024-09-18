@@ -97,6 +97,9 @@ class HomePage extends StatelessWidget {
                             horizontal: 15,
                           ),
                           child: TextFormField(
+                            onTap: () {
+                              Navigator.pushNamed(context, '/searchfood');
+                            },
                             onFieldSubmitted: (value) {
                               Navigator.pushNamed(context, '/searchfood');
                             },
@@ -1009,7 +1012,9 @@ class HomePage extends StatelessWidget {
           ],
         ),
         child: FloatingActionButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, '/cartpage');
+            },
             child: Icon(CupertinoIcons.cart, size: 28, color: Colors.orange),
             backgroundColor: Colors.white),
       ),

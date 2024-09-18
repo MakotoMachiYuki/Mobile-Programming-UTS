@@ -41,7 +41,7 @@ class SearchFood extends StatelessWidget {
                   ),
                 ),
                 const Text(
-                  "Search Food",
+                  "Meal Go",
                   style: TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
