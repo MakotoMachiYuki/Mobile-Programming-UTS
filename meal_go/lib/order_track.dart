@@ -59,6 +59,7 @@ class _OrderDetailstate extends State<OrderTrack> {
                   options: MapOptions(
                     center: LatLng(lat, lng),
                     zoom: 13.2,
+                    maxZoom: 18,
                   ),
                   children: [
                     TileLayer(
@@ -149,25 +150,25 @@ class _OrderDetailstate extends State<OrderTrack> {
                                     Text(
                                       'Driver : Henry',
                                       style: TextStyle(
-                                          fontSize: 16,
+                                          fontSize: 24,
                                           fontWeight: FontWeight.bold),
                                     ),
                                     SizedBox(height: 5),
                                     Row(
                                       children: [
                                         Icon(Icons.star,
-                                            color: Colors.orange, size: 16),
+                                            color: Colors.orange, size: 20),
                                         SizedBox(width: 5),
                                         Text(
                                           '4.8 (120 reviews)',
-                                          style: TextStyle(fontSize: 14),
+                                          style: TextStyle(fontSize: 20),
                                         ),
                                       ],
                                     ),
                                     SizedBox(height: 5),
                                     Text(
                                       'Vehicle: Honda Vario - BXXXXAAA',
-                                      style: TextStyle(fontSize: 14),
+                                      style: TextStyle(fontSize: 20),
                                     ),
                                   ],
                                 ),
@@ -179,7 +180,7 @@ class _OrderDetailstate extends State<OrderTrack> {
                             Text(
                               "Order Details",
                               style: TextStyle(
-                                fontSize: 18,
+                                fontSize: 24,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
