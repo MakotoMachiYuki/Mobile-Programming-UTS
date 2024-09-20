@@ -15,6 +15,19 @@ class _SignUpState extends State<SignUp> {
   final _formkey = GlobalKey<FormState>();
   final FocusNode _nameFocusNode = FocusNode();
   final FocusNode _emailFocusNode = FocusNode();
+  final FocusNode _phoneFocusNode = FocusNode();
+  final FocusNode _passwordFocusNode = FocusNode();
+  final FocusNode _confirmPasswordFocusNode = FocusNode();
+
+  @override
+  void dispose() {
+    _nameFocusNode.dispose();
+    _emailFocusNode.dispose();
+    _phoneFocusNode.dispose();
+    _passwordFocusNode.dispose();
+    _confirmPasswordFocusNode.dispose();
+    super.dispose();
+  }
 
   final nameValidator = ValidationBuilder()
       .minLength(3, 'Name must be at least 3 characters')
@@ -41,13 +54,6 @@ class _SignUpState extends State<SignUp> {
   final TextEditingController _phone = TextEditingController();
   final TextEditingController _password = TextEditingController();
   final TextEditingController _confirmPassword = TextEditingController();
-
-  @override
-  void dispose() {
-    _nameFocusNode.dispose();
-    _emailFocusNode.dispose();
-    super.dispose();
-  }
 
   var _passwordVisible = false;
   var _confirmPasswordVisible = false;
@@ -113,6 +119,11 @@ class _SignUpState extends State<SignUp> {
                           focusNode: _nameFocusNode,
                           validator: nameValidator,
                           controller: _name,
+                          textInputAction: TextInputAction.next,
+                          onFieldSubmitted: (_) {
+                            FocusScope.of(context)
+                                .requestFocus(_emailFocusNode);
+                          },
                           decoration: const InputDecoration(
                               prefixIcon: Icon(Icons.account_box_outlined),
                               labelText: 'Name',
@@ -126,8 +137,14 @@ class _SignUpState extends State<SignUp> {
                         const SizedBox(height: 20.0),
                         TextFormField(
                           keyboardType: TextInputType.emailAddress,
+                          focusNode: _emailFocusNode,
                           controller: _email,
                           validator: emailValidator,
+                          textInputAction: TextInputAction.next,
+                          onFieldSubmitted: (_) {
+                            FocusScope.of(context)
+                                .requestFocus(_phoneFocusNode);
+                          },
                           decoration: const InputDecoration(
                             prefixIcon: Icon(Icons.email_outlined),
                             labelText: 'Email',
@@ -141,9 +158,14 @@ class _SignUpState extends State<SignUp> {
                         ),
                         const SizedBox(height: 20.0),
                         TextFormField(
-                          keyboardType: TextInputType.phone,
                           validator: phoneValidator,
+                          focusNode: _phoneFocusNode,
                           controller: _phone,
+                          textInputAction: TextInputAction.next,
+                          onFieldSubmitted: (_) {
+                            FocusScope.of(context)
+                                .requestFocus(_passwordFocusNode);
+                          },
                           decoration: const InputDecoration(
                             prefixIcon: Icon(Icons.phone_android_outlined),
                             labelText: 'Phone Number',
@@ -158,8 +180,14 @@ class _SignUpState extends State<SignUp> {
                         const SizedBox(height: 20.0),
                         TextFormField(
                           obscureText: !_passwordVisible,
+                          focusNode: _passwordFocusNode,
                           controller: _password,
                           validator: passwordValidator,
+                          textInputAction: TextInputAction.next,
+                          onFieldSubmitted: (_) {
+                            FocusScope.of(context)
+                                .requestFocus(_confirmPasswordFocusNode);
+                          },
                           decoration: InputDecoration(
                               prefixIcon: const Icon(Icons.password_outlined),
                               labelText: 'Password',
@@ -186,6 +214,7 @@ class _SignUpState extends State<SignUp> {
                         const SizedBox(height: 20.0),
                         TextFormField(
                           obscureText: !_confirmPasswordVisible,
+                          focusNode: _confirmPasswordFocusNode,
                           controller: _confirmPassword,
                           validator: (val) {
                             if (val!.isEmpty) {
