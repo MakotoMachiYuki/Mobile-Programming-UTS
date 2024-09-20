@@ -511,6 +511,31 @@ class CheckoutPage extends StatelessWidget {
                       ],
                     ),
                   ),
+                  Divider(
+                    color: Colors.black,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      vertical: 10,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Total",
+                          style: TextStyle(
+                              fontSize: 30, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          "Rp 50.000",
+                          style: TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.orange),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -522,7 +547,7 @@ class CheckoutPage extends StatelessWidget {
               height: 50,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.pop(context, '/backtohomepage');
+                  Navigator.pushNamed(context, '/orderplaced');
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.orange,

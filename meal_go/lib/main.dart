@@ -6,7 +6,7 @@ import 'package:meal_go/cart.dart';
 import 'package:meal_go/checkout.dart';
 import 'package:meal_go/restaurant_home.dart';
 import 'package:meal_go/settings.dart';
-
+import 'package:meal_go/orderplaced.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,19 +19,20 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Meal Go',
-      debugShowCheckedModeBanner: false,
+        title: 'Meal Go',
+        debugShowCheckedModeBanner: false,
+        home: CheckoutPage(),
+        routes: {
+          '/orderplaced': (context) => const OrderPlacedPage(),
+        }
+        // home: const HomePage(),
+        // routes: {
+        //   '/backtohomepage': (context) => const HomePage(),
+        //   '/searchfood': (context) => const SearchFood(),
+        //   '/cartpage': (context) => CartPage(),
+        // }
 
-      //home: CheckoutPage(),
-      // home: const HomePage(),
-      // routes: {
-      //   '/backtohomepage': (context) => const HomePage(),
-      //   '/searchfood': (context) => const SearchFood(),
-      //   '/cartpage': (context) => CartPage(),
-      // }
-
-      home: RestaurantHome(),
-
-    );
+        // home: RestaurantHome(),
+        );
   }
 }
