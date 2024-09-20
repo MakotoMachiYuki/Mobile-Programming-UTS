@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+
 import 'package:meal_go/restaurant_home.dart';
+import 'package:meal_go/settings.dart';
+
 
 void main() {
   runApp(const MyApp());
