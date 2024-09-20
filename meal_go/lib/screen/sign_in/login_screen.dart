@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:meal_go/home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:meal_go/restaurant.dart';
 import 'package:meal_go/screen/sign_in/sign_in_screen.dart';
 
 class Login extends StatefulWidget {
@@ -37,7 +37,7 @@ class _LoginState extends State<Login> {
         if (mounted) {
           ScaffoldMessenger.of(context).clearSnackBars();
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const StoreDetail()));
+              MaterialPageRoute(builder: (context) => const HomePage()));
         }
       } else {
         if (mounted) {
