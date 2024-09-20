@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:meal_go/restaurant.dart';
 import 'package:meal_go/restaurant_home.dart';
 
 void main() {
