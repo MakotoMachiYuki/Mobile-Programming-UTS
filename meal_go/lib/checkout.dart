@@ -79,7 +79,112 @@ class CheckoutPage extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 20),
+
+          SizedBox(height: 30),
+          //delivery options
+          Container(
+            padding: EdgeInsets.symmetric(vertical: 10),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 2,
+                    blurRadius: 10,
+                    offset: Offset(0, 3)),
+              ],
+            ),
+            child: const Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 10, left: 10),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Delivery Options",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 10),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Priority",
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        "< 30 mins",
+                        style: TextStyle(fontSize: 16),
+                      ),
+                      Text(
+                        "Rp 20.000",
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                ),
+                Divider(),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Standar",
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        "40 mins",
+                        style: TextStyle(fontSize: 16),
+                      ),
+                      Text(
+                        "Rp 16.000",
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                ),
+                Divider(),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Saver",
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        "50 mins",
+                        style: TextStyle(fontSize: 16),
+                      ),
+                      Text(
+                        "Rp 12.000",
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          // order summary
+          SizedBox(height: 15),
           const Padding(
             padding: EdgeInsets.only(top: 20, left: 10),
             child: Align(
@@ -442,7 +547,7 @@ class CheckoutPage extends StatelessWidget {
                           style: TextStyle(fontSize: 20),
                         ),
                         Text(
-                          "Rp20.000",
+                          "Rp60.000",
                           style: TextStyle(fontSize: 20),
                         ),
                       ],
@@ -484,7 +589,7 @@ class CheckoutPage extends StatelessWidget {
                           style: TextStyle(fontSize: 20),
                         ),
                         Text(
-                          "3",
+                          "Rp 1.000",
                           style: TextStyle(fontSize: 20),
                         ),
                       ],
@@ -527,7 +632,7 @@ class CheckoutPage extends StatelessWidget {
                               fontSize: 30, fontWeight: FontWeight.bold),
                         ),
                         Text(
-                          "Rp 50.000",
+                          "Rp 81.000",
                           style: TextStyle(
                               fontSize: 30,
                               fontWeight: FontWeight.bold,
