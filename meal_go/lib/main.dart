@@ -21,16 +21,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'Meal Go',
         debugShowCheckedModeBanner: false,
-        home: CheckoutPage(),
-        routes: {
-          '/orderplaced': (context) => const OrderPlacedPage(),
-        }
-        // home: const HomePage(),
+        // home: CheckoutPage(),
         // routes: {
-        //   '/backtohomepage': (context) => const HomePage(),
-        //   '/searchfood': (context) => const SearchFood(),
-        //   '/cartpage': (context) => CartPage(),
+        //   '/orderplaced': (context) => const OrderPlacedPage(),
         // }
+        home: const HomePage(),
+        routes: {
+          '/backtohomepage': (context) => const HomePage(),
+          '/searchfood': (context) => const SearchFood(),
+          '/cartpage': (context) => CartPage(),
+        }
 
         // home: RestaurantHome(),
         );
