@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:meal_go/rating.dart';
 import 'location.dart';
 
 class OrderTrack extends StatefulWidget {
@@ -198,7 +199,13 @@ class _OrderDetailstate extends State<OrderTrack> {
                               height: 20,
                             ),
                             ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Rating()),
+                                );
+                              },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor:
                                     const Color.fromARGB(255, 253, 224, 171),
@@ -210,7 +217,13 @@ class _OrderDetailstate extends State<OrderTrack> {
                                       color: Color.fromARGB(255, 53, 53, 53))),
                             ),
                             ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Rating()),
+                                );
+                              },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor:
                                     const Color.fromARGB(255, 255, 166, 0),
