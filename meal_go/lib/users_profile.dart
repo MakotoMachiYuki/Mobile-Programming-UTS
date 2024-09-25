@@ -19,20 +19,52 @@ class UsersProfile extends StatelessWidget {
         body: Column(
           children: [
             Container(
-              child: Row(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              color: Colors.orange,
+              height: 100,
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  CircleAvatar(),
-                  Container(),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      CircleAvatar(
+                        radius: 40,
+                      ),
+                      SizedBox(width: 20),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('Nama'),
+                          Text('youremail@mail.com'),
+                        ],
+                      )
+                    ],
+                  ),
                   IconButton(
-                      onPressed: null,
-                      icon: Icon(CupertinoIcons.pencil_ellipsis_rectangle))
+                    onPressed: null,
+                    iconSize: 30,
+                    icon: Icon(
+                      CupertinoIcons.pencil_ellipsis_rectangle,
+                      color: Colors.black,
+                    ),
+                  ),
                 ],
               ),
             ),
             Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(
                 children: [
-                  Container(),
+                  SizedBox(height: 20),
+                  Row(
+                    children: [
+                      Row(
+                        children: [Icon(CupertinoIcons.paperclip)],
+                      )
+                    ],
+                  ),
                   Container(),
                 ],
               ),
