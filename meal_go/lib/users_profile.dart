@@ -2,74 +2,111 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class UsersProfile extends StatelessWidget {
+  const UsersProfile({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('My Profile'),
-          centerTitle: true,
-          elevation: 0,
-          leading: IconButton(
-            icon: const Icon(CupertinoIcons.back, color: Colors.orange),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        centerTitle: true,
+        title: const Text(
+          'My Profile',
+          style: TextStyle(color: Colors.black),
         ),
-        body: Column(
-          children: [
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              color: Colors.orange,
-              height: 100,
-              child: const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      CircleAvatar(
-                        radius: 40,
+        leading: IconButton(
+          icon: const Icon(CupertinoIcons.back, color: Colors.blue),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
+      body: Column(
+        children: [
+          // Profile Header Section
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            color: Colors.orange,
+            height: 120,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const CircleAvatar(
+                      radius: 40,
+                      backgroundColor: Colors.grey,
+                      child: Icon(
+                        CupertinoIcons.person,
+                        size: 40,
+                        color: Colors.white,
                       ),
-                      SizedBox(width: 20),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text('Nama'),
-                          Text('youremail@mail.com'),
-                        ],
-                      )
-                    ],
-                  ),
-                  IconButton(
-                    onPressed: null,
-                    iconSize: 30,
-                    icon: Icon(
-                      CupertinoIcons.pencil_ellipsis_rectangle,
-                      color: Colors.black,
                     ),
+                    const SizedBox(width: 20),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Text(
+                          'Name',
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          'Youremail@Untar.Ac.Id',
+                          style: TextStyle(color: Colors.black54),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                IconButton(
+                  onPressed: () {
+                    // Add functionality for editing profile if needed
+                  },
+                  icon: const Icon(
+                    CupertinoIcons.pencil_ellipsis_rectangle,
+                    color: Colors.black,
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Column(
-                children: [
-                  SizedBox(height: 20),
-                  Row(
-                    children: [
-                      Row(
-                        children: [Icon(CupertinoIcons.paperclip)],
-                      )
-                    ],
-                  ),
-                  Container(),
-                ],
-              ),
-            )
-          ],
-        ));
+          ),
+          const Divider(
+            height: 1,
+            color: Colors.grey,
+          ),
+          // Menu Options
+          Expanded(
+            child: ListView(
+              children: [
+                ListTile(
+                  leading: const Icon(CupertinoIcons.cart),
+                  title: const Text('Order History'),
+                  trailing: const Icon(CupertinoIcons.chevron_forward),
+                  onTap: () {
+                    // Navigate to Order History page
+                  },
+                ),
+                Divider(
+                  height: 1,
+                  color: Colors.grey.shade300,
+                ),
+                ListTile(
+                  leading: const Icon(CupertinoIcons.location),
+                  title: const Text('My Address'),
+                  trailing: const Icon(CupertinoIcons.chevron_forward),
+                  onTap: () {
+                    // Navigate to My Address page
+                  },
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
