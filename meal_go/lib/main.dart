@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
       //home: RestaurantHome(),
       // routes: {
       //   '/backtohomepage': (context) => const HomePage(),
-      //   '/searchfood': (context) => const SearchFood(),
+      //   '/searchfood': (context) => const SearchFoo  d(),
       //   '/cartpage': (context) => CartPage(),
       // }
     );

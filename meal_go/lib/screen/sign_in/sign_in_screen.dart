@@ -21,15 +21,19 @@ class _SignInState extends State<SignIn> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Expanded(
-                child: Container(
-                  margin: const EdgeInsets.only(top: 10.0),
+                flex: 4,
+                child: Center(
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(50),
                     child: Container(
-                      color: Colors.deepOrange,
+                      padding: const EdgeInsets.all(20),
+                      decoration: BoxDecoration(
+                          color: Colors.deepOrange,
+                          borderRadius: BorderRadius.circular(50)),
                       child: Image.asset(
                         'assets/images/Meal_go.png',
                         height: 250.0,
+                        fit: BoxFit.contain,
                       ),
                     ),
                   ),
