@@ -18,7 +18,7 @@ class UsersProfile extends StatelessWidget {
         leading: IconButton(
           icon: const Icon(CupertinoIcons.back, color: Colors.blue),
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.pushNamed(context, '/backtohomepage');
           },
         ),
       ),
@@ -87,7 +87,7 @@ class UsersProfile extends StatelessWidget {
                   title: const Text('Order History'),
                   trailing: const Icon(CupertinoIcons.chevron_forward),
                   onTap: () {
-                    // Navigate to Order History page
+                    Navigator.pushNamed(context, '/orderhistory');
                   },
                 ),
                 Divider(
@@ -99,7 +99,7 @@ class UsersProfile extends StatelessWidget {
                   title: const Text('My Address'),
                   trailing: const Icon(CupertinoIcons.chevron_forward),
                   onTap: () {
-                    // Navigate to My Address page
+                    Navigator.pushNamed(context, '/address');
                   },
                 ),
               ],
