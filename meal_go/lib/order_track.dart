@@ -1,7 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:meal_go/api.dart';
+import 'package:meal_go/rating.dart';
 import 'location.dart';
+import "package:http/http.dart" as http;
 
 class OrderTrack extends StatefulWidget {
   const OrderTrack({super.key});
@@ -14,6 +19,8 @@ class _OrderDetailstate extends State<OrderTrack> {
   LocationService locationService = LocationService();
   double lat = 0.0;
   double lng = 0.0;
+  double lat1 = -6.161976789496748;
+  double lng1 = 106.78967049440392;
   bool loading = true;
 
   @override
@@ -29,6 +36,25 @@ class _OrderDetailstate extends State<OrderTrack> {
       lng = locationService.lng;
       loading = false;
     });
+    getCoordinates();
+  }
+
+  List listPoints = [];
+
+  List<LatLng> Points = [];
+
+  getCoordinates() async {
+    var response = await http.get(getRouteurl("$lng,$lat", "$lng1,$lat1"));
+
+    setState(() {
+      if (response.statusCode == 200) {
+        var data = jsonDecode(response.body);
+        listPoints = data['features'][0]['geometry']['coordinates'];
+        Points = listPoints
+            .map((e) => LatLng(e[1].toDouble(), e[0].toDouble()))
+            .toList();
+      }
+    });
   }
 
   @override
@@ -37,7 +63,9 @@ class _OrderDetailstate extends State<OrderTrack> {
       appBar: AppBar(
         leading: IconButton(
           padding: EdgeInsets.all(10),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
           iconSize: 15,
           icon: Icon(Icons.arrow_back_ios_new),
         ),
@@ -59,6 +87,8 @@ class _OrderDetailstate extends State<OrderTrack> {
                   options: MapOptions(
                     center: LatLng(lat, lng),
                     zoom: 13.2,
+                    maxZoom: 18,
+                    minZoom: 10,
                   ),
                   children: [
                     TileLayer(
@@ -78,7 +108,7 @@ class _OrderDetailstate extends State<OrderTrack> {
                           ),
                         ),
                         Marker(
-                          point: LatLng(40.752596717129805, -73.98730215796661),
+                          point: LatLng(lat1, lng1),
                           width: 80,
                           height: 80,
                           builder: (context) => Icon(
@@ -89,6 +119,13 @@ class _OrderDetailstate extends State<OrderTrack> {
                         ),
                       ],
                     ),
+                    PolylineLayer(
+                      polylineCulling: false,
+                      polylines: [
+                        Polyline(
+                            points: Points, color: Colors.blue, strokeWidth: 5),
+                      ],
+                    )
                   ],
                 ),
                 SizedBox.expand(
@@ -145,23 +182,27 @@ class _OrderDetailstate extends State<OrderTrack> {
                                   children: [
                                     Text(
                                       'Driver : Henry',
+
                                       style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+
                                     ),
                                     SizedBox(height: 5),
                                     Row(
                                       children: [
+
                                         Icon(Icons.star, color: Colors.orange, size: 16),
+
                                         SizedBox(width: 5),
                                         Text(
                                           '4.8 (120 reviews)',
-                                          style: TextStyle(fontSize: 14),
+                                          style: TextStyle(fontSize: 20),
                                         ),
                                       ],
                                     ),
                                     SizedBox(height: 5),
                                     Text(
                                       'Vehicle: Honda Vario - BXXXXAAA',
-                                      style: TextStyle(fontSize: 14),
+                                      style: TextStyle(fontSize: 20),
                                     ),
                                   ],
                                 ),
@@ -173,7 +214,7 @@ class _OrderDetailstate extends State<OrderTrack> {
                             Text(
                               "Order Details",
                               style: TextStyle(
-                                fontSize: 18,
+                                fontSize: 24,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -191,7 +232,13 @@ class _OrderDetailstate extends State<OrderTrack> {
                               height: 20,
                             ),
                             ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Rating()),
+                                );
+                              },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: const Color.fromARGB(255, 253, 224, 171),
                               ),
@@ -205,7 +252,13 @@ class _OrderDetailstate extends State<OrderTrack> {
                               ),
                             ),
                             ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Rating()),
+                                );
+                              },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: const Color.fromARGB(255, 255, 166, 0),
                               ),
