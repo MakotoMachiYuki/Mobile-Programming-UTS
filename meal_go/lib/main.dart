@@ -7,6 +7,7 @@ import 'package:meal_go/home.dart';
 import 'package:meal_go/search_food.dart';
 import 'package:meal_go/cart.dart';
 import 'package:meal_go/checkout.dart';
+import 'package:meal_go/restaurant_list_screen.dart';
 import 'package:meal_go/restaurant_home.dart';
 import 'package:meal_go/settings.dart';
 // import 'restaurant_menu.dart';
@@ -40,9 +41,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
       //home: OrderTrack(),
-      // home: SignIn(),
+      //home: SignIn(),
       //home: CheckoutPage(),
       //home: const HomePage(),
+      home: RestaurantList(),
       //home: RestaurantHome(),
       //home: UsersProfile(),
       routes: {

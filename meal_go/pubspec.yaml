@@ -85,6 +85,13 @@ flutter:
     - assets/images/menu/Spaghetti-Senk.webp
     - assets/images/menu/SplitzaPizza.webp
 
+    #restaurant list images
+    - assets/images/restaurant/aw.jpeg
+    - assets/images/restaurant/burgerking.jpeg
+    - assets/images/restaurant/chaldea.jpeg
+    - assets/images/restaurant/kfc.jpeg
+    - assets/images/restaurant/mcdonalds.jpeg
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 
