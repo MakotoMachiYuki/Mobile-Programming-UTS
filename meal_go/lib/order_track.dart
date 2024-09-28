@@ -62,8 +62,7 @@ class _OrderDetailstate extends State<OrderTrack> {
                   ),
                   children: [
                     TileLayer(
-                      urlTemplate:
-                          'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                      urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
                       userAgentPackageName: 'com.example.app',
                     ),
                     MarkerLayer(
@@ -97,8 +96,7 @@ class _OrderDetailstate extends State<OrderTrack> {
                     initialChildSize: 0.22,
                     minChildSize: 0.22,
                     maxChildSize: 0.8,
-                    builder: (BuildContext context,
-                        ScrollController scrollController) {
+                    builder: (BuildContext context, ScrollController scrollController) {
                       return Container(
                         padding: EdgeInsets.symmetric(
                           horizontal: 15,
@@ -139,8 +137,7 @@ class _OrderDetailstate extends State<OrderTrack> {
                               children: [
                                 CircleAvatar(
                                   radius: 70,
-                                  backgroundImage: NetworkImage(
-                                      'https://i.ebayimg.com/images/g/B~gAAOSwhNthhdjn/s-l1200.jpg'),
+                                  backgroundImage: NetworkImage('https://i.ebayimg.com/images/g/B~gAAOSwhNthhdjn/s-l1200.jpg'),
                                 ),
                                 SizedBox(width: 15),
                                 Column(
@@ -148,15 +145,12 @@ class _OrderDetailstate extends State<OrderTrack> {
                                   children: [
                                     Text(
                                       'Driver : Henry',
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold),
+                                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                                     ),
                                     SizedBox(height: 5),
                                     Row(
                                       children: [
-                                        Icon(Icons.star,
-                                            color: Colors.orange, size: 16),
+                                        Icon(Icons.star, color: Colors.orange, size: 16),
                                         SizedBox(width: 5),
                                         Text(
                                           '4.8 (120 reviews)',
@@ -199,26 +193,30 @@ class _OrderDetailstate extends State<OrderTrack> {
                             ElevatedButton(
                               onPressed: () {},
                               style: ElevatedButton.styleFrom(
-                                backgroundColor:
-                                    const Color.fromARGB(255, 253, 224, 171),
+                                backgroundColor: const Color.fromARGB(255, 253, 224, 171),
                               ),
-                              child: const Text('Finish Order',
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
-                                      color: Color.fromARGB(255, 53, 53, 53))),
+                              child: const Text(
+                                'Finish Order',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color.fromARGB(255, 53, 53, 53),
+                                ),
+                              ),
                             ),
                             ElevatedButton(
                               onPressed: () {},
                               style: ElevatedButton.styleFrom(
-                                backgroundColor:
-                                    const Color.fromARGB(255, 255, 166, 0),
+                                backgroundColor: const Color.fromARGB(255, 255, 166, 0),
                               ),
-                              child: const Text('Cancel Order',
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
-                                      color: Color.fromARGB(255, 53, 53, 53))),
+                              child: const Text(
+                                'Cancel Order',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color.fromARGB(255, 53, 53, 53),
+                                ),
+                              ),
                             ),
                           ],
                         ),

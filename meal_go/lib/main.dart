@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import 'package:meal_go/order_track.dart';
 import 'package:meal_go/screen/sign_in/sign_in_screen.dart';
 import 'package:meal_go/home.dart';
@@ -8,9 +10,23 @@ import 'package:meal_go/cart.dart';
 import 'package:meal_go/checkout.dart';
 import 'package:meal_go/restaurant_home.dart';
 import 'package:meal_go/settings.dart';
+// import 'restaurant_menu.dart';
+
+import 'model/cart.dart';
+import 'model/menuCatalog.dart';
 
 void main() {
-  runApp(const MyApp());
+  final menuCatalog = MenuCatalogModel();
+  final cartModel = CartModel();
+
+  cartModel.initializeCatalog(menuCatalog);
+
+  runApp(
+    ChangeNotifierProvider<CartModel>(
+      create: (context) => cartModel,
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -20,14 +36,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(scaffoldBackgroundColor: Colors.white),
       title: 'Meal Go',
       debugShowCheckedModeBanner: false,
 
       //home: OrderTrack(),
-      home: SignIn(),
+      // home: SignIn(),
       //home: CheckoutPage(),
       //home: const HomePage(),
-      //home: RestaurantHome(),
+      home: RestaurantHome(),
       // routes: {
       //   '/backtohomepage': (context) => const HomePage(),
       //   '/searchfood': (context) => const SearchFood(),
