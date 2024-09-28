@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:getwidget/getwidget.dart';
 
 class Settings extends StatefulWidget {
   const Settings({super.key});
@@ -10,6 +11,7 @@ class Settings extends StatefulWidget {
 class _SettingsState extends State<Settings> {
   bool _notificationsEnabled = true;
   bool _darkModeEnabled = false;
+  List<String> selectedPaymentMethods = [];
 
   @override
   Widget build(BuildContext context) {
@@ -57,9 +59,26 @@ class _SettingsState extends State<Settings> {
           ListTile(
             leading: Icon(Icons.wallet),
             title: Text('Payment Method'),
+            subtitle: Text(selectedPaymentMethods.isEmpty
+                ? 'None'
+                : selectedPaymentMethods.join(', ')),
             trailing: Icon(Icons.arrow_right),
-            onTap: () {
-              //buat refer ke pagenya
+            onTap: () async {
+              List<String>? methods = await showDialog<List<String>>(
+                context: context,
+                builder: (BuildContext context) {
+                  return _MultiSelectDialog(
+                    selectedMethods: selectedPaymentMethods,
+                  );
+                },
+              );
+
+              // Update the selected payment methods
+              if (methods != null) {
+                setState(() {
+                  selectedPaymentMethods = methods;
+                });
+              }
             },
           ),
           ListTile(
@@ -67,7 +86,7 @@ class _SettingsState extends State<Settings> {
             title: Text('Privacy Policy'),
             trailing: Icon(Icons.arrow_right),
             onTap: () {
-              //buat refer ke pagenya
+              // Implement navigation to Privacy Policy page
             },
           ),
           ListTile(
@@ -75,7 +94,7 @@ class _SettingsState extends State<Settings> {
             title: Text('Change Password'),
             trailing: Icon(Icons.arrow_right),
             onTap: () {
-              //buat refer ke pagenya
+              // Implement navigation to Change Password page
             },
           ),
           Align(
@@ -94,6 +113,71 @@ class _SettingsState extends State<Settings> {
           ),
         ],
       ),
+    );
+  }
+}
+
+class _MultiSelectDialog extends StatefulWidget {
+  final List<String> selectedMethods;
+
+  const _MultiSelectDialog({required this.selectedMethods});
+
+  @override
+  _MultiSelectDialogState createState() => _MultiSelectDialogState();
+}
+
+class _MultiSelectDialogState extends State<_MultiSelectDialog> {
+  List<String> _availableMethods = ['Cash', 'OVO', 'DANA', 'Debit/Credit Card'];
+  List<String> _selectedMethods = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedMethods = List.from(widget.selectedMethods);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: Text('Select Payment Methods'),
+      content: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: _availableMethods.map((method) {
+            return CheckboxListTile(
+              title: Text(method),
+              value: _selectedMethods.contains(method),
+              onChanged: (bool? value) {
+                setState(() {
+                  if (value == true) {
+                    _selectedMethods.add(method);
+                  } else {
+                    _selectedMethods.remove(method);
+                  }
+                });
+              },
+              checkColor: Colors.white,
+              activeColor: Colors.amber,
+            );
+          }).toList(),
+        ),
+      ),
+      actions: <Widget>[
+        TextButton(
+          child: Text('Cancel'),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          style: TextButton.styleFrom(foregroundColor: Colors.amber),
+        ),
+        TextButton(
+          child: Text('Apply'),
+          onPressed: () {
+            Navigator.pop(context, _selectedMethods);
+          },
+          style: TextButton.styleFrom(foregroundColor: Colors.amber),
+        ),
+      ],
     );
   }
 }
