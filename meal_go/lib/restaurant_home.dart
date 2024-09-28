@@ -48,7 +48,7 @@ class AddToCart extends StatelessWidget {
                     Icons.shopping_cart_outlined,
                     semanticLabel: 'ADD',
                   ),
-            isInCart ? Text('ADD') : Text('ADDED'),
+            isInCart ? Text('ADDED') : Text('ADD'),
           ],
         ),
       ),
