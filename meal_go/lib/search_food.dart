@@ -13,11 +13,32 @@ class _SearchFoodState extends State<SearchFood> {
   var isLoved = <bool>[false, false, false, false];
   var isIncart = <bool>[false, false, false, false];
 
-  List<String> itemImages = [
-    "assets/burger.png",
-    "assets/burger.png",
-    "assets/burger.png",
-    "assets/burger.png",
+  List<Map<String, String>> recentorderList = [
+    {
+      "image": "assets/sandwich.png",
+      "name": "Sandwich",
+      "description":
+          "Sandwich dengan campuran sayuran, ayam dan saos didalamnya",
+      "price": "Rp 30.000"
+    },
+    {
+      "image": "assets/salad.png",
+      "name": "Salad",
+      "description": "Campuran berbagai macam sayuran dengan saos salad",
+      "price": "Rp 26.000"
+    },
+    {
+      "image": "assets/chickenwings.png",
+      "name": "Chicken Wings",
+      "description": "Wings dengan saos pedas",
+      "price": "Rp 45.000"
+    },
+    {
+      "image": "assets/thaisoup.png",
+      "name": "Thai Soup",
+      "description": "Soup tomyam dengan campuran seafood didalamnya",
+      "price": "Rp 50.000"
+    },
   ];
 
   @override
@@ -115,12 +136,12 @@ class _SearchFoodState extends State<SearchFood> {
                     spacing: 10,
                     children: [
                       _buildSearchFoodChip("Burger"),
-                      _buildSearchFoodChip("Burger"),
-                      _buildSearchFoodChip("Burger"),
-                      _buildSearchFoodChip("Burger"),
-                      _buildSearchFoodChip("Burger"),
-                      _buildSearchFoodChip("Burger"),
-                      _buildSearchFoodChip("Burger"),
+                      _buildSearchFoodChip("Soup"),
+                      _buildSearchFoodChip("Ayam"),
+                      _buildSearchFoodChip("Salad"),
+                      _buildSearchFoodChip("Katsu"),
+                      _buildSearchFoodChip("Rice Bowl"),
+                      _buildSearchFoodChip("Pizza"),
                     ],
                   ),
                 ],
@@ -144,13 +165,13 @@ class _SearchFoodState extends State<SearchFood> {
                   Wrap(
                     spacing: 10,
                     children: [
-                      _buildSearchFoodChip("Burger"),
-                      _buildSearchFoodChip("Burger"),
-                      _buildSearchFoodChip("Burger"),
-                      _buildSearchFoodChip("Burger"),
-                      _buildSearchFoodChip("Burger"),
-                      _buildSearchFoodChip("Burger"),
-                      _buildSearchFoodChip("Burger"),
+                      _buildSearchFoodChip("Pizza"),
+                      _buildSearchFoodChip("Pasta"),
+                      _buildSearchFoodChip("Soup"),
+                      _buildSearchFoodChip("salad"),
+                      _buildSearchFoodChip("Chicken"),
+                      _buildSearchFoodChip("Cheese Burger"),
+                      _buildSearchFoodChip("Spaghetti"),
                     ],
                   ),
                 ],
@@ -175,12 +196,15 @@ class _SearchFoodState extends State<SearchFood> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
               child: Column(
-                children: [
-                  buildItem(context, 0, "Burger", "Deskripsi", "Rp 20.000"),
-                  buildItem(context, 1, "Burger", "Deskripsi", "Rp 20.000"),
-                  buildItem(context, 2, "Burger", "Deskripsi", "Rp 20.000"),
-                  buildItem(context, 3, "Burger", "Deskripsi", "Rp 20.000"),
-                ],
+                children: List.generate(recentorderList.length, (index) {
+                  return buildRecentOrderItem(
+                    context,
+                    index,
+                    recentorderList[index]["name"]!,
+                    recentorderList[index]["description"]!,
+                    recentorderList[index]["price"]!,
+                  );
+                }),
               ),
             ),
           ],
@@ -189,8 +213,8 @@ class _SearchFoodState extends State<SearchFood> {
     );
   }
 
-  Padding buildItem(BuildContext, int index, String itemName, String deskripsi,
-      String price) {
+  Padding buildRecentOrderItem(BuildContext context, int index, String itemName,
+      String description, String price) {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 10),
       child: Container(
@@ -215,7 +239,7 @@ class _SearchFoodState extends State<SearchFood> {
               child: Container(
                 alignment: Alignment.center,
                 child: Image.asset(
-                  itemImages[index],
+                  recentorderList[index]["image"]!,
                   height: 120,
                   width: 150,
                 ),
@@ -235,7 +259,7 @@ class _SearchFoodState extends State<SearchFood> {
                     ),
                   ),
                   Text(
-                    deskripsi,
+                    description,
                     style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,

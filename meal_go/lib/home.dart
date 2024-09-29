@@ -11,14 +11,62 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  var isLoved = <bool>[false, false, false, false];
+  var isLovedPopular = <bool>[false, false, false, false];
+  var isLovedRecommended = <bool>[false, false, false, false];
   var isIncart = <bool>[false, false, false, false];
 
-  List<String> itemImages = [
-    "assets/burger.png",
-    "assets/burger.png",
-    "assets/burger.png",
-    "assets/burger.png",
+  List<Map<String, String>> popularList = [
+    {
+      "image": "assets/chickenpizza.png",
+      "name": "Chicken Pizza",
+      "description": "Potongan ayam, sayuran dan saos",
+      "price": "Rp 80.000"
+    },
+    {
+      "image": "assets/steak.png",
+      "name": "Steak",
+      "description": "Steak dengan saos barbeque",
+      "price": "Rp 120.000"
+    },
+    {
+      "image": "assets/miegoreng.png",
+      "name": "Mie Goreng",
+      "description": "Mie, telur, sayuran dan seafood",
+      "price": "Rp 20.000"
+    },
+    {
+      "image": "assets/cupcakes.png",
+      "name": "CupCakes",
+      "description": "CupCakes dengan rasa strawberry",
+      "price": "Rp 15.000"
+    },
+  ];
+
+  List<Map<String, String>> recommendedList = [
+    {
+      "image": "assets/cheeseburger.png",
+      "name": "Cheese Burger",
+      "description": "Roti, Telur, daging, cheese",
+      "price": "Rp 45.000"
+    },
+    {
+      "image": "assets/pancake.png",
+      "name": "Pancake",
+      "description": "Pancake dengan madu dan bluberry diatasnya",
+      "price": "Rp 55.000"
+    },
+    {
+      "image": "assets/ricebowl.png",
+      "name": "Rice Bowl",
+      "description": "Nasi dengan campuran bihun, ayam dan sayuran",
+      "price": "Rp 25.000"
+    },
+    {
+      "image": "assets/pasta.png",
+      "name": "Pasta",
+      "description": "Pasta dengan saos carbonara",
+      "price": "Rp 33.000"
+    },
   ];
 
   @override
@@ -191,7 +239,7 @@ class _HomePageState extends State<HomePage> {
                             )
                           ]),
                       child: Image.asset(
-                        "assets/burger.png",
+                        "assets/donat.png",
                         width: 50,
                         height: 50,
                       ),
@@ -213,7 +261,7 @@ class _HomePageState extends State<HomePage> {
                             )
                           ]),
                       child: Image.asset(
-                        "assets/burger.png",
+                        "assets/pizza.png",
                         width: 50,
                         height: 50,
                       ),
@@ -235,7 +283,7 @@ class _HomePageState extends State<HomePage> {
                             )
                           ]),
                       child: Image.asset(
-                        "assets/burger.png",
+                        "assets/cola.png",
                         width: 50,
                         height: 50,
                       ),
@@ -257,7 +305,7 @@ class _HomePageState extends State<HomePage> {
                             )
                           ]),
                       child: Image.asset(
-                        "assets/burger.png",
+                        "assets/kentang.png",
                         width: 50,
                         height: 50,
                       ),
@@ -323,11 +371,11 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(20),
                   child: Image.asset(
-                    'assets/burger.png',
-                    height: 100,
-                    width: 100,
+                    'assets/deals.png',
+                    height: 120,
+                    width: 120,
                   ),
                 )
               ],
@@ -352,249 +400,84 @@ class _HomePageState extends State<HomePage> {
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 15, horizontal: 5),
               child: Row(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 7),
-                    child: Container(
-                      width: 160,
-                      height: 225,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 2,
-                              blurRadius: 10,
-                              offset: Offset(0, 3),
-                            )
-                          ]),
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 10),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              child: Image.asset(
-                                "assets/burger.png",
-                                height: 100,
-                              ),
+                  children: List.generate(isLovedPopular.length, (index) {
+                return Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 7),
+                  child: Container(
+                    width: 160,
+                    height: 225,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 10,
+                            offset: Offset(0, 3),
+                          )
+                        ]),
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: Image.asset(
+                              popularList[index]["image"]!,
+                              height: 100,
+                              width: double.infinity,
+                              fit: BoxFit.cover,
                             ),
-                            const Text(
-                              "Burger",
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(height: 4),
-                            const Text(
-                              "Roti burger, daging, sayur",
-                              style: TextStyle(
-                                fontSize: 15,
-                              ),
-                            ),
-                            SizedBox(height: 12),
-                            const Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Rp 20.000",
-                                  style: TextStyle(
-                                    fontSize: 17,
-                                    color: Colors.orange,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            popularList[index]["name"]!,
+                            style: const TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            popularList[index]["description"]!,
+                            style: TextStyle(fontSize: 15),
+                          ),
+                          const SizedBox(height: 12),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                popularList[index]["price"]!,
+                                style: const TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.orange,
+                                  fontWeight: FontWeight.bold,
                                 ),
-                                Icon(Icons.favorite_border,
-                                    color: Colors.orange, size: 26)
-                              ],
-                            )
-                          ],
-                        ),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    isLovedPopular[index] =
+                                        !isLovedPopular[index];
+                                  });
+                                },
+                                child: Icon(
+                                    isLovedPopular[index]
+                                        ? Icons.favorite
+                                        : Icons.favorite_border,
+                                    color: isLovedPopular[index]
+                                        ? Colors.red
+                                        : Colors.orange,
+                                    size: 26),
+                              ),
+                            ],
+                          )
+                        ],
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 7),
-                    child: Container(
-                      width: 160,
-                      height: 225,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 2,
-                              blurRadius: 10,
-                              offset: Offset(0, 3),
-                            )
-                          ]),
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 10),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              child: Image.asset(
-                                "assets/burger.png",
-                                height: 100,
-                              ),
-                            ),
-                            const Text(
-                              "Burger",
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(height: 4),
-                            const Text(
-                              "Roti burger, daging, sayur",
-                              style: TextStyle(
-                                fontSize: 15,
-                              ),
-                            ),
-                            SizedBox(height: 12),
-                            const Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Rp 20.000",
-                                  style: TextStyle(
-                                    fontSize: 17,
-                                    color: Colors.orange,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                Icon(Icons.favorite_border,
-                                    color: Colors.orange, size: 26)
-                              ],
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 7),
-                    child: Container(
-                      width: 160,
-                      height: 225,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 2,
-                              blurRadius: 10,
-                              offset: Offset(0, 3),
-                            )
-                          ]),
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 10),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              child: Image.asset(
-                                "assets/burger.png",
-                                height: 100,
-                              ),
-                            ),
-                            const Text(
-                              "Burger",
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(height: 4),
-                            const Text(
-                              "Roti burger, daging, sayur",
-                              style: TextStyle(
-                                fontSize: 15,
-                              ),
-                            ),
-                            SizedBox(height: 12),
-                            const Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Rp 20.000",
-                                  style: TextStyle(
-                                    fontSize: 17,
-                                    color: Colors.orange,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                Icon(Icons.favorite_border,
-                                    color: Colors.orange, size: 26)
-                              ],
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 7),
-                    child: Container(
-                      width: 160,
-                      height: 225,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 2,
-                              blurRadius: 10,
-                              offset: Offset(0, 3),
-                            )
-                          ]),
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 10),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              child: Image.asset(
-                                "assets/burger.png",
-                                height: 100,
-                              ),
-                            ),
-                            const Text(
-                              "Burger",
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(height: 4),
-                            const Text(
-                              "Roti burger, daging, sayur",
-                              style: TextStyle(
-                                fontSize: 15,
-                              ),
-                            ),
-                            SizedBox(height: 12),
-                            const Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Rp 20.000",
-                                  style: TextStyle(
-                                    fontSize: 17,
-                                    color: Colors.orange,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                Icon(Icons.favorite_border,
-                                    color: Colors.orange, size: 26)
-                              ],
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+                );
+              })),
             ),
           ),
 
@@ -613,12 +496,15 @@ class _HomePageState extends State<HomePage> {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: Column(
-              children: [
-                buildItem(context, 0, "Burger", "Deskripsi", "Rp 20.000"),
-                buildItem(context, 1, "Burger", "Deskripsi", "Rp 20.000"),
-                buildItem(context, 2, "Burger", "Deskripsi", "Rp 20.000"),
-                buildItem(context, 3, "Burger", "Deskripsi", "Rp 20.000"),
-              ],
+              children: List.generate(recommendedList.length, (index) {
+                return buildRecommendedItem(
+                  context,
+                  index,
+                  recommendedList[index]["name"]!,
+                  recommendedList[index]["description"]!,
+                  recommendedList[index]["price"]!,
+                );
+              }),
             ),
           ),
         ],
@@ -645,8 +531,8 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Padding buildItem(BuildContext, int index, String itemName, String deskripsi,
-      String price) {
+  Padding buildRecommendedItem(BuildContext context, int index, String itemName,
+      String description, String price) {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 10),
       child: Container(
@@ -671,7 +557,7 @@ class _HomePageState extends State<HomePage> {
               child: Container(
                 alignment: Alignment.center,
                 child: Image.asset(
-                  itemImages[index],
+                  recommendedList[index]["image"]!,
                   height: 120,
                   width: 150,
                 ),
@@ -691,7 +577,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   Text(
-                    deskripsi,
+                    description,
                     style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -730,13 +616,18 @@ class _HomePageState extends State<HomePage> {
                     onTap: () {
                       setState(
                         () {
-                          isLoved[index] = !isLoved[index];
+                          isLovedRecommended[index] =
+                              !isLovedRecommended[index];
                         },
                       );
                     },
                     child: Icon(
-                        isLoved[index] ? Icons.favorite : Icons.favorite_border,
-                        color: isLoved[index] ? Colors.red : Colors.orange,
+                        isLovedRecommended[index]
+                            ? Icons.favorite
+                            : Icons.favorite_border,
+                        color: isLovedRecommended[index]
+                            ? Colors.red
+                            : Colors.orange,
                         size: 26),
                   ),
                   GestureDetector(
