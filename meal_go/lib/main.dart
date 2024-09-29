@@ -9,7 +9,6 @@ import 'package:meal_go/cart.dart';
 import 'package:meal_go/checkout.dart';
 import 'package:meal_go/restaurant_home.dart';
 import 'package:meal_go/settings.dart';
-import 'package:meal_go/orderplaced.dart';
 // import 'restaurant_menu.dart';
 import 'model/cart.dart';
 import 'model/menuCatalog.dart';
@@ -36,27 +35,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Meal Go',
-        debugShowCheckedModeBanner: false,
-        // home: CheckoutPage(),
-        // routes: {
-        //   '/orderplaced': (context) => const OrderPlacedPage(),
-        // }
-        home: const HomePage(),
-        routes: {
-          '/backtohomepage': (context) => const HomePage(),
-          '/searchfood': (context) => const SearchFood(),
-          '/cartpage': (context) => CartPage(),
-        }
-
-        // home: RestaurantHome(),
-        );
       theme: ThemeData(scaffoldBackgroundColor: Colors.white),
       title: 'Meal Go',
       debugShowCheckedModeBanner: false,
 
       //home: OrderTrack(),
-      // home: SignIn(),
+      //home: SignIn(),
       //home: CheckoutPage(),
       //home: const HomePage(),
       //home: RestaurantHome(),
