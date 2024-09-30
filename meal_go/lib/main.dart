@@ -42,9 +42,10 @@ class MyApp extends StatelessWidget {
 
       //home: OrderTrack(),
       //home: SignIn(),
-      // home: CheckoutPage(),
-      home: const HomePage(),
-      // home: RestaurantHome(),
+      //home: CheckoutPage(),
+      //home: const HomePage(),
+      //home: Settings(),
+      //home: RestaurantHome(),
       //home: UsersProfile(),
       routes: {
         '/orderplaced': (context) => const OrderPlacedPage(),
