@@ -116,7 +116,7 @@ class _HomePageState extends State<HomePage> {
                               offset: Offset(0, 3),
                             )
                           ]),
-                      child: Icon(Icons.notifications)),
+                      child: Icon(Icons.notifications),),
                 )
               ],
             ),

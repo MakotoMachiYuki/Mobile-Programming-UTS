@@ -43,8 +43,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  geolocator: ^12.0.0
-  geolocator_android: 4.5.5
+  geolocator: ^9.0.0
+  geolocator_android: 4.0.0
   flutter_map: ^5.0.0
   latlong2: ^0.9.0
 
