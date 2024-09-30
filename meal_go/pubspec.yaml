@@ -67,6 +67,26 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/burger.png
+    - assets/donat.png
+    - assets/kentang.png
+    - assets/cola.png
+    - assets/pizza.png
+    - assets/chickenpizza.png
+    - assets/cheeseburger.png
+    - assets/chickenwings.png
+    - assets/miegoreng.png
+    - assets/pancake.png
+    - assets/ricebowl.png
+    - assets/salad.png
+    - assets/sandwich.png
+    - assets/pasta.png
+    - assets/cupcakes.png
+    - assets/steak.png
+    - assets/thaisoup.png
+    - assets/cart.png
+    - assets/order.png
+    - assets/deals.png
     - assets/images/Meal_go.png
     #   - images/a_dot_burr.jpeg
     - assets/burger.png
