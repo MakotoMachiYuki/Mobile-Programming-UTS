@@ -261,7 +261,7 @@ class _OrderDetailstate extends State<OrderTrack> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => HomePage()),
+                                      builder: (context) => Rating()),
                                 );
                               },
                               style: ElevatedButton.styleFrom(
@@ -282,7 +282,7 @@ class _OrderDetailstate extends State<OrderTrack> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Rating()),
+                                      builder: (context) => HomePage()),
                                 );
                               },
                               style: ElevatedButton.styleFrom(
