@@ -50,9 +50,7 @@ class _OrderDetailstate extends State<OrderTrack> {
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body);
         listPoints = data['features'][0]['geometry']['coordinates'];
-        Points = listPoints
-            .map((e) => LatLng(e[1].toDouble(), e[0].toDouble()))
-            .toList();
+        Points = listPoints.map((e) => LatLng(e[1].toDouble(), e[0].toDouble())).toList();
       }
     });
   }
@@ -122,8 +120,7 @@ class _OrderDetailstate extends State<OrderTrack> {
                     PolylineLayer(
                       polylineCulling: false,
                       polylines: [
-                        Polyline(
-                            points: Points, color: Colors.blue, strokeWidth: 5),
+                        Polyline(points: Points, color: Colors.blue, strokeWidth: 5),
                       ],
                     )
                   ],
@@ -182,16 +179,12 @@ class _OrderDetailstate extends State<OrderTrack> {
                                   children: [
                                     Text(
                                       'Driver : Henry',
-
                                       style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-
                                     ),
                                     SizedBox(height: 5),
                                     Row(
                                       children: [
-
                                         Icon(Icons.star, color: Colors.orange, size: 16),
-
                                         SizedBox(width: 5),
                                         Text(
                                           '4.8 (120 reviews)',
@@ -235,8 +228,7 @@ class _OrderDetailstate extends State<OrderTrack> {
                               onPressed: () {
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Rating()),
+                                  MaterialPageRoute(builder: (context) => Rating()),
                                 );
                               },
                               style: ElevatedButton.styleFrom(
@@ -255,8 +247,7 @@ class _OrderDetailstate extends State<OrderTrack> {
                               onPressed: () {
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Rating()),
+                                  MaterialPageRoute(builder: (context) => Rating()),
                                 );
                               },
                               style: ElevatedButton.styleFrom(
