@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:meal_go/cart.dart';
+import 'package:meal_go/model/cart.dart';
+import 'package:meal_go/model/menuCatalog.dart';
+import 'package:meal_go/model/restaurants.dart';
 import 'package:meal_go/order_track.dart';
+import 'package:meal_go/model/restaurant_list.dart';
 
 class OrderPlacedPage extends StatelessWidget {
-  const OrderPlacedPage({super.key});
+  final RestaurantListModel restaurant;
+  final CartModel cart;
+  const OrderPlacedPage({Key? key, required this.restaurant, required this.cart}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +25,8 @@ class OrderPlacedPage extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-        title: const Text(
-          "My Order",
+        title: Text(
+          restaurant.name,
           style: TextStyle(
             color: Colors.black,
             fontSize: 25,
@@ -53,11 +60,11 @@ class OrderPlacedPage extends StatelessWidget {
                 const SizedBox(height: 10),
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 80),
-                  // child: Text(
-                  //   "Good news my friend. Your order #211245870 has been placed",
-                  //   style: TextStyle(fontSize: 17, color: Colors.black),
-                  //   textAlign: TextAlign.center,
-                  // ),
+                  child: Text(
+                    "Good news my friend. Your order #211245870 has been placed",
+                    style: TextStyle(fontSize: 17, color: Colors.black),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
                 const SizedBox(height: 30),
                 Padding(
@@ -69,7 +76,7 @@ class OrderPlacedPage extends StatelessWidget {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => OrderTrack()),
+                          MaterialPageRoute(builder: (context) => OrderTrack(restaurant: restaurant, cart: cart)),
                         );
                       },
                       style: ElevatedButton.styleFrom(

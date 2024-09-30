@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:meal_go/model/restaurant_list.dart';
 import 'package:meal_go/orderplaced.dart';
+import 'package:meal_go/restaurant_home.dart';
 import 'package:provider/provider.dart';
+import 'package:meal_go/model/menuCatalog.dart';
 import 'model/cart.dart';
 
 class CartPage extends StatelessWidget {
-  const CartPage({super.key});
+  final RestaurantListModel restaurant;
+
+  const CartPage({Key? key, required this.restaurant}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +43,12 @@ class CartPage extends StatelessWidget {
                 child: cart.food.isEmpty ? EmptyCart() : FoodList(cart: cart),
               ),
               if (!cart.food.isEmpty) const Divider(height: 4, color: Colors.black),
-              if (!cart.food.isEmpty) TotalPayment(cart: cart),
+              if (!cart.food.isEmpty)
+                TotalPayment(
+                  cart: cart,
+                  restaurant: restaurant,
+                  // menuCatalog: menuCatalog,
+                ),
             ],
           );
         },
@@ -201,8 +211,10 @@ class EmptyCart extends StatelessWidget {
 class TotalPayment extends StatelessWidget {
   final CartModel cart;
   final orderFee = 10000;
+  // final MenuCatalogModel menuCatalog;
+  final RestaurantListModel restaurant;
 
-  const TotalPayment({required this.cart});
+  const TotalPayment({Key? key, required this.restaurant, required this.cart}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -259,7 +271,7 @@ class TotalPayment extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => OrderPlacedPage(),
+                          builder: (context) => OrderPlacedPage(restaurant: restaurant, cart: cart),
                         ),
                       );
                     },

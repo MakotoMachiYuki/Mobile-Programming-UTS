@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:meal_go/model/restaurant_list.dart';
+import 'package:meal_go/restaurant_list_screen.dart';
 import 'package:provider/provider.dart';
 import 'cart.dart';
 import 'model/menuCatalog.dart';
@@ -57,7 +59,9 @@ class AddToCart extends StatelessWidget {
 }
 
 class RestaurantHome extends StatefulWidget {
-  const RestaurantHome({super.key});
+  final RestaurantListModel restaurant;
+
+  const RestaurantHome({Key? key, required this.restaurant}) : super(key: key);
 
   @override
   State<RestaurantHome> createState() => _RestaurantHomeState();
@@ -324,8 +328,8 @@ class _RestaurantHomeState extends State<RestaurantHome> {
                   contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                 ),
               )
-            : const Text(
-                'Store Name',
+            : Text(
+                widget.restaurant.name,
                 style: TextStyle(fontSize: 20),
               ),
         actions: [
@@ -508,20 +512,11 @@ class _RestaurantHomeState extends State<RestaurantHome> {
           if (index == 2) {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => CartPage()),
+              MaterialPageRoute(builder: (context) => CartPage(restaurant: widget.restaurant)),
             );
           }
         },
       ),
     );
-  }
-}
-
-class MyWidget extends StatelessWidget {
-  const MyWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
   }
 }
