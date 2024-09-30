@@ -4,12 +4,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:meal_go/api.dart';
+import 'package:meal_go/model/cart.dart';
+import 'package:meal_go/model/menuCatalog.dart';
+import 'package:meal_go/model/restaurants.dart';
 import 'package:meal_go/rating.dart';
 import 'location.dart';
 import "package:http/http.dart" as http;
+import 'package:meal_go/model/restaurant_list.dart';
 
 class OrderTrack extends StatefulWidget {
-  const OrderTrack({super.key});
+  final RestaurantListModel restaurant;
+  final CartModel cart;
+  const OrderTrack({super.key, required this.restaurant, required this.cart});
 
   @override
   State<OrderTrack> createState() => _OrderDetailstate();

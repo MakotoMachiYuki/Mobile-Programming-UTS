@@ -17,6 +17,5 @@ class RestaurantListModel {
   int get hashCode => id;
 
   @override
-  bool operator ==(Object other) =>
-      other is RestaurantListModel && other.id == id;
+  bool operator ==(Object other) => other is RestaurantListModel && other.id == id;
 }
