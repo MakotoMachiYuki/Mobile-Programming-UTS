@@ -44,9 +44,9 @@ class MyApp extends StatelessWidget {
       // home: OrderTrack(),
       // home: SignIn(),
       // home: CheckoutPage(),
-      // home: const HomePage(),
-      // home: RestaurantList(),
-      // home: RestaurantHome(),
+      home: const HomePage(),
+      //home: RestaurantList(),
+      //home: RestaurantHome(),
       // home: Settings(),
       // home: Settings(),
       // home: RestaurantHome(),
@@ -58,6 +58,8 @@ class MyApp extends StatelessWidget {
         // '/cartpage': (context) => CartPage(),
         '/orderhistory': (context) => OrderHistory(),
         '/address': (context) => MyAddress(),
+        '/users_profile': (context) => UsersProfile(),
+        '/settings': (context) => Settings(),
       },
     );
   }
