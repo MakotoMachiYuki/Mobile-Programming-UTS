@@ -60,6 +60,7 @@ class MyApp extends StatelessWidget {
         '/address': (context) => MyAddress(),
         '/users_profile': (context) => UsersProfile(),
         '/settings': (context) => Settings(),
+        '/restaurantlist': (context) => RestaurantList(),
       },
     );
   }

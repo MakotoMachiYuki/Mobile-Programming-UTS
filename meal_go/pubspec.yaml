@@ -89,6 +89,7 @@ flutter:
     - assets/order.png
     - assets/deals.png
     - assets/images/Meal_go.png
+    - assets/resto.png
     #   - images/a_dot_burr.jpeg
     - assets/burger.png
     - assets/cart.png

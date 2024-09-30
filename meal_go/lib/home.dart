@@ -489,6 +489,75 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
 
+          // restaurant list section
+          Container(
+            margin: const EdgeInsets.symmetric(
+              horizontal: 15,
+            ),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 25,
+              vertical: 10,
+            ),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              gradient: const LinearGradient(
+                colors: [Colors.orange, Colors.white],
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+              ),
+            ),
+            width: double.maxFinite,
+            child: Row(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image.asset(
+                    'assets/resto.png',
+                    height: 120,
+                    width: 120,
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    padding: EdgeInsets.only(left: 10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const SizedBox(
+                          width: 170,
+                          child: Text("Restaurant\nLists",
+                              maxLines: 6,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white)),
+                        ),
+                        SizedBox(height: 6),
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/restaurantlist');
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.red,
+                            minimumSize: Size(160, 50),
+                          ),
+                          child: const Text(
+                            "View All \nRestaurant Lists",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+
           //Recommended for you item
           const Padding(
             padding: EdgeInsets.only(top: 20, left: 10),
