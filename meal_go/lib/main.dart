@@ -45,8 +45,10 @@ class MyApp extends StatelessWidget {
       //home: SignIn(),
       //home: CheckoutPage(),
       //home: const HomePage(),
-      home: RestaurantList(),
-      // home: RestaurantHome(),
+      //home: RestaurantList(),
+      //home: RestaurantHome(),
+      //home: Settings(),
+      //home: RestaurantHome(),
       //home: UsersProfile(),
       routes: {
         '/orderplaced': (context) => const OrderPlacedPage(),
