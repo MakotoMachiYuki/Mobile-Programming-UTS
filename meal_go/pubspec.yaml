@@ -33,11 +33,12 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
+  provider: ^6.1.2
   cupertino_icons: ^1.0.8
   form_validator: ^2.1.1
-  shared_preferences: ^2.0.13
+  shared_preferences: ^2.3.2
   flutter_rating_bar: ^4.0.1
-
+  http: ^1.2.2
 
 dev_dependencies:
   flutter_test:
@@ -66,12 +67,43 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/burger.png
+    - assets/donat.png
+    - assets/kentang.png
+    - assets/cola.png
+    - assets/pizza.png
+    - assets/chickenpizza.png
+    - assets/cheeseburger.png
+    - assets/chickenwings.png
+    - assets/miegoreng.png
+    - assets/pancake.png
+    - assets/ricebowl.png
+    - assets/salad.png
+    - assets/sandwich.png
+    - assets/pasta.png
+    - assets/cupcakes.png
+    - assets/steak.png
+    - assets/thaisoup.png
+    - assets/cart.png
+    - assets/order.png
+    - assets/deals.png
     - assets/images/Meal_go.png
-  #   - images/a_dot_burr.jpeg
+    #   - images/a_dot_burr.jpeg
     - assets/burger.png
     - assets/cart.png
-  #   - images/a_dot_ham.jpeg
+    #   - images/a_dot_ham.jpeg
     - assets/images/Test.jpg
+
+    - assets/images/menu/CarbonaraBeefNoDrama.webp
+    - assets/images/menu/CarbonaraChickenNoDrama.webp
+    - assets/images/menu/CheesePleaseFusilli.webp
+    - assets/images/menu/DeluxPizza.webp
+    - assets/images/menu/MacCrunchyChiz.webp
+    - assets/images/menu/Mom'sSpaghettiBolognese.webp
+    - assets/images/menu/ShuffleTruffle.webp
+    - assets/images/menu/SignaturePizza.webp
+    - assets/images/menu/Spaghetti-Senk.webp
+    - assets/images/menu/SplitzaPizza.webp
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
