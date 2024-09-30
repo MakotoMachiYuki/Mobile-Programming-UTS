@@ -44,14 +44,14 @@ class MyApp extends StatelessWidget {
       // home: OrderTrack(),
       // home: SignIn(),
       // home: CheckoutPage(),
-      //home: const HomePage(),
-      home: RestaurantList(),
+      home: const HomePage(),
+      //home: RestaurantList(),
       //home: RestaurantHome(),
       // home: Settings(),
       // home: Settings(),
       // home: RestaurantHome(),
       // home: UsersProfile(),
-      routes: {
+      routes: <String, WidgetBuilder>{
         // '/orderplaced': (context) => const OrderPlacedPage(),
         '/backtohomepage': (context) => HomePage(),
         '/searchfood': (context) => const SearchFood(),

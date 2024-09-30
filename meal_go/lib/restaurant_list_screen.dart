@@ -33,7 +33,9 @@ class _RestaurantListState extends State<RestaurantList> {
         leading: !activeSearch
             ? IconButton(
                 padding: const EdgeInsets.all(8),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/backtohomepage');
+                },
                 iconSize: 20,
                 icon: const Icon(Icons.arrow_back_ios_new),
               )
@@ -48,7 +50,8 @@ class _RestaurantListState extends State<RestaurantList> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  contentPadding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                  contentPadding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                 ),
               )
             : const Text(
@@ -71,7 +74,10 @@ class _RestaurantListState extends State<RestaurantList> {
             padding: const EdgeInsets.all(16.0),
             child: Text(
               'Popular Restaurant',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: screenHeight * 0.06, color: Colors.black),
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: screenHeight * 0.06,
+                  color: Colors.black),
             ),
           ),
           const SizedBox(height: 10),
@@ -82,13 +88,15 @@ class _RestaurantListState extends State<RestaurantList> {
                 final restaurant = RestaurantsModel.lists[index];
 
                 return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 15.0, horizontal: 10.0),
                   child: InkWell(
                     onTap: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => RestaurantHome(restaurant: restaurant),
+                          builder: (context) =>
+                              RestaurantHome(restaurant: restaurant),
                         ),
                       );
                     },
