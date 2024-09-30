@@ -18,7 +18,7 @@ class UsersProfile extends StatelessWidget {
         leading: IconButton(
           icon: const Icon(CupertinoIcons.back, color: Colors.blue),
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.pushNamed(context, '/backtohomepage');
           },
         ),
       ),
@@ -49,24 +49,17 @@ class UsersProfile extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: const [
                         Text(
-                          'Name',
+                          'Allison Brie',
                           style: TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold),
                         ),
                         Text(
-                          'Youremail@Untar.Ac.Id',
+                          'Abby@gmail.com',
                           style: TextStyle(color: Colors.black54),
                         ),
                       ],
                     ),
                   ],
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    CupertinoIcons.pencil_ellipsis_rectangle,
-                    color: Colors.black,
-                  ),
                 ),
               ],
             ),
@@ -83,7 +76,7 @@ class UsersProfile extends StatelessWidget {
                   title: const Text('Order History'),
                   trailing: const Icon(CupertinoIcons.chevron_forward),
                   onTap: () {
-                    // navigasi page order history
+                    Navigator.pushNamed(context, '/orderhistory');
                   },
                 ),
                 Divider(
@@ -95,7 +88,19 @@ class UsersProfile extends StatelessWidget {
                   title: const Text('My Address'),
                   trailing: const Icon(CupertinoIcons.chevron_forward),
                   onTap: () {
-                    // navigasi page my address
+                    Navigator.pushNamed(context, '/address');
+                  },
+                ),
+                Divider(
+                  height: 1,
+                  color: Colors.grey.shade300,
+                ),
+                ListTile(
+                  leading: const Icon(CupertinoIcons.pencil_ellipsis_rectangle),
+                  title: const Text('Edit Profile'),
+                  trailing: const Icon(CupertinoIcons.chevron_forward),
+                  onTap: () {
+                    Navigator.pushNamed(context, '/editprofile');
                   },
                 ),
               ],
