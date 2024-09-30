@@ -13,6 +13,8 @@ class _EditProfileState extends State<EditProfile> {
       TextEditingController(text: 'Brie');
   final TextEditingController addressController = TextEditingController(
       text: 'Jl. Pinus No. 12, Jakarta Barat\nDKI Jakarta');
+  final TextEditingController phoneController =
+      TextEditingController(text: '081235467888');
   final TextEditingController emailController =
       TextEditingController(text: 'Abby.brie@gmail.com');
   final TextEditingController bioController =
@@ -44,6 +46,7 @@ class _EditProfileState extends State<EditProfile> {
             _buildEditableRow('First Name', firstNameController),
             _buildEditableRow('Last Name', lastNameController),
             _buildEditableRow('Address', addressController),
+            _buildEditableRow('Phone', phoneController),
             _buildEditableRow('Email', emailController),
             _buildEditableRow('Bio', bioController),
           ],
