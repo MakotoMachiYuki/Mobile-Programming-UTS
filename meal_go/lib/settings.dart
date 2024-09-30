@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:getwidget/getwidget.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'privacypolicy.dart';
 
 class Settings extends StatefulWidget {
   const Settings({super.key});
@@ -12,6 +13,29 @@ class _SettingsState extends State<Settings> {
   bool _notificationsEnabled = true;
   bool _darkModeEnabled = false;
   List<String> selectedPaymentMethods = [];
+  bool _policyAccepted = false;
+  bool _prefsLoaded = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadPolicyStatus();
+  }
+
+  Future<void> _loadPolicyStatus() async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      setState(() {
+        _policyAccepted = prefs.getBool('privacy_policy_accepted') ?? false;
+        _prefsLoaded = true;
+      });
+    } catch (e) {
+      print('Error loading shared preferences: $e');
+      setState(() {
+        _prefsLoaded = true;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,88 +55,99 @@ class _SettingsState extends State<Settings> {
         toolbarHeight: 44,
         backgroundColor: Colors.amber,
       ),
-      body: ListView(
-        children: <Widget>[
-          SwitchListTile(
-            title: Text('Notifications'),
-            subtitle: Text('Enable to receive notifications'),
-            activeColor: Colors.amber,
-            value: _notificationsEnabled,
-            onChanged: (bool value) {
-              setState(() {
-                _notificationsEnabled = value;
-              });
-            },
-          ),
-          SwitchListTile(
-            title: Text('Dark Mode'),
-            subtitle: Text('Enable dark mode'),
-            value: _darkModeEnabled,
-            activeColor: Colors.black,
-            inactiveThumbColor: Colors.grey,
-            onChanged: (bool value) {
-              setState(() {
-                _darkModeEnabled = value;
-              });
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.wallet),
-            title: Text('Payment Method'),
-            subtitle: Text(selectedPaymentMethods.isEmpty
-                ? 'None'
-                : selectedPaymentMethods.join(', ')),
-            trailing: Icon(Icons.arrow_right),
-            onTap: () async {
-              List<String>? methods = await showDialog<List<String>>(
-                context: context,
-                builder: (BuildContext context) {
-                  return _MultiSelectDialog(
-                    selectedMethods: selectedPaymentMethods,
-                  );
-                },
-              );
-
-              // Update the selected payment methods
-              if (methods != null) {
-                setState(() {
-                  selectedPaymentMethods = methods;
-                });
-              }
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.import_contacts),
-            title: Text('Privacy Policy'),
-            trailing: Icon(Icons.arrow_right),
-            onTap: () {
-              // Implement navigation to Privacy Policy page
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.lock),
-            title: Text('Change Password'),
-            trailing: Icon(Icons.arrow_right),
-            onTap: () {
-              // Implement navigation to Change Password page
-            },
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                '© 2024 Go Meal. All rights reserved.',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 12,
-                  color: Colors.grey,
+      body: _prefsLoaded
+          ? ListView(
+              children: <Widget>[
+                SwitchListTile(
+                  title: Text('Notifications'),
+                  subtitle: Text('Enable to receive notifications'),
+                  activeColor: Colors.amber,
+                  value: _notificationsEnabled,
+                  onChanged: (bool value) {
+                    setState(() {
+                      _notificationsEnabled = value;
+                    });
+                  },
                 ),
-              ),
-            ),
-          ),
-        ],
-      ),
+                SwitchListTile(
+                  title: Text('Dark Mode'),
+                  subtitle: Text('Enable dark mode'),
+                  value: _darkModeEnabled,
+                  activeColor: Colors.black,
+                  inactiveThumbColor: Colors.grey,
+                  onChanged: (bool value) {
+                    setState(() {
+                      _darkModeEnabled = value;
+                    });
+                  },
+                ),
+                ListTile(
+                  leading: Icon(Icons.wallet),
+                  title: Text('Payment Method'),
+                  subtitle: Text(selectedPaymentMethods.isEmpty
+                      ? 'None'
+                      : selectedPaymentMethods.join(', ')),
+                  trailing: Icon(Icons.arrow_right),
+                  onTap: () async {
+                    List<String>? methods = await showDialog<List<String>>(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return _MultiSelectDialog(
+                          selectedMethods: selectedPaymentMethods,
+                        );
+                      },
+                    );
+
+                    if (methods != null) {
+                      setState(() {
+                        selectedPaymentMethods = methods;
+                      });
+                    }
+                  },
+                ),
+                ListTile(
+                  leading: Icon(Icons.import_contacts),
+                  title: Text('Privacy Policy'),
+                  subtitle: Text(_policyAccepted ? 'Accepted' : 'Not accepted'),
+                  trailing: Icon(Icons.arrow_right),
+                  onTap: () async {
+                    final result = await Navigator.push<bool>(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => PrivacyPolicyPage()),
+                    );
+                    if (result != null) {
+                      setState(() {
+                        _policyAccepted = result;
+                      });
+                    }
+                  },
+                ),
+                ListTile(
+                  leading: Icon(Icons.lock),
+                  title: Text('Change Password'),
+                  trailing: Icon(Icons.arrow_right),
+                  onTap: () {
+                    //Code buat change pass
+                  },
+                ),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      '© 2024 Go Meal. All rights reserved.',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            )
+          : Center(child: CircularProgressIndicator()),
     );
   }
 }
@@ -168,14 +203,14 @@ class _MultiSelectDialogState extends State<_MultiSelectDialog> {
           onPressed: () {
             Navigator.pop(context);
           },
-          style: TextButton.styleFrom(foregroundColor: Colors.amber),
+          style: TextButton.styleFrom(foregroundColor: Colors.orange),
         ),
         TextButton(
           child: Text('Apply'),
           onPressed: () {
             Navigator.pop(context, _selectedMethods);
           },
-          style: TextButton.styleFrom(foregroundColor: Colors.amber),
+          style: TextButton.styleFrom(foregroundColor: Colors.orange),
         ),
       ],
     );
