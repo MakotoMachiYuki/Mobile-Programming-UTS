@@ -43,9 +43,9 @@ class MyApp extends StatelessWidget {
 
       //home: OrderTrack(),
       //home: SignIn(),
-      // home: CheckoutPage(),
-      home: const HomePage(),
-      //home: RestaurantList(),
+      //home: CheckoutPage(),
+      //home: const HomePage(),
+      home: RestaurantList(),
       // home: RestaurantHome(),
       //home: UsersProfile(),
       routes: {

@@ -24,6 +24,8 @@ class _RestaurantListState extends State<RestaurantList> {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFFFFA500),
@@ -67,11 +69,11 @@ class _RestaurantListState extends State<RestaurantList> {
           Container(
             width: MediaQuery.of(context).size.width,
             padding: const EdgeInsets.all(16.0),
-            child: const Text(
+            child: Text(
               'Popular Restaurant',
               style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 40,
+                  fontSize: screenHeight * 0.06,
                   color: Colors.black),
             ),
           ),
@@ -81,6 +83,7 @@ class _RestaurantListState extends State<RestaurantList> {
               itemCount: RestaurantsModel.lists.length,
               itemBuilder: (context, index) {
                 final restaurant = RestaurantsModel.lists[index];
+
                 return Padding(
                   padding: const EdgeInsets.symmetric(
                       vertical: 15.0, horizontal: 10.0),
@@ -107,12 +110,13 @@ class _RestaurantListState extends State<RestaurantList> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
-                              width: 200,
-                              height: 200,
+                              width: screenWidth * 0.4,
+                              height: screenHeight * 0.2,
                               decoration: BoxDecoration(
                                 image: DecorationImage(
-                                    image: AssetImage(restaurant.image),
-                                    fit: BoxFit.cover),
+                                  image: AssetImage(restaurant.image),
+                                  fit: BoxFit.cover,
+                                ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
                             ),
@@ -123,15 +127,18 @@ class _RestaurantListState extends State<RestaurantList> {
                                 children: [
                                   Text(
                                     restaurant.name,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 40),
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: screenHeight * 0.04,
+                                    ),
                                   ),
                                   const SizedBox(height: 5),
-                                  const Text(
+                                  Text(
                                     'This is a random text that stores some useful information.',
                                     style: TextStyle(
-                                        color: Colors.black, fontSize: 20),
+                                      color: Colors.black,
+                                      fontSize: screenHeight * 0.02,
+                                    ),
                                   ),
                                 ],
                               ),
