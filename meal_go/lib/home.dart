@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:meal_go/drawerwidget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -73,6 +74,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      drawer: DrawerWidget(),
       body: ListView(
         children: [
           // App Bar Widget
@@ -84,22 +86,28 @@ class _HomePageState extends State<HomePage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                InkWell(
-                  onTap: () {},
-                  child: Container(
-                      padding: EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(20),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 2,
-                              blurRadius: 10,
-                              offset: Offset(0, 3),
-                            )
-                          ]),
-                      child: Icon(CupertinoIcons.bars)),
+                Builder(
+                  builder: (BuildContext context) {
+                    return InkWell(
+                      onTap: () {
+                        Scaffold.of(context).openDrawer();
+                      },
+                      child: Container(
+                          padding: EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(20),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  spreadRadius: 2,
+                                  blurRadius: 10,
+                                  offset: Offset(0, 3),
+                                )
+                              ]),
+                          child: Icon(CupertinoIcons.bars)),
+                    );
+                  },
                 ),
                 InkWell(
                   onTap: () {},
@@ -117,7 +125,7 @@ class _HomePageState extends State<HomePage> {
                             )
                           ]),
                       child: Icon(Icons.notifications)),
-                )
+                ),
               ],
             ),
           ),
@@ -649,4 +657,8 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+}
+
+extension on ScaffoldMessengerState {
+  void openDrawer() {}
 }

@@ -53,6 +53,8 @@ class MyApp extends StatelessWidget {
         '/cartpage': (context) => CartPage(),
         '/orderhistory': (context) => OrderHistory(),
         '/address': (context) => MyAddress(),
+        '/users_profile': (context) => UsersProfile(),
+        '/settings': (context) => Settings(),
       },
     );
   }
