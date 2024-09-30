@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:meal_go/orderplaced.dart';
 import 'package:provider/provider.dart';
 import 'model/cart.dart';
 
@@ -208,7 +209,6 @@ class TotalPayment extends StatelessWidget {
     return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        // width: double.infinity,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
@@ -256,7 +256,12 @@ class TotalPayment extends StatelessWidget {
                   ),
                   FilledButton(
                     onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Buying not supported yet.')));
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => OrderPlacedPage(),
+                        ),
+                      );
                     },
                     style: TextButton.styleFrom(foregroundColor: Colors.white),
                     child: const Text('Order Food'),

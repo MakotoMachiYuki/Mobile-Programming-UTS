@@ -11,9 +11,24 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  var isLovedPopular = <bool>[false, false, false, false];
-  var isLovedRecommended = <bool>[false, false, false, false];
-  var isIncart = <bool>[false, false, false, false];
+  var isLovedPopular = <bool>[
+    false,
+    false,
+    false,
+    false
+  ];
+  var isLovedRecommended = <bool>[
+    false,
+    false,
+    false,
+    false
+  ];
+  var isIncart = <bool>[
+    false,
+    false,
+    false,
+    false
+  ];
 
   List<Map<String, String>> popularList = [
     {
@@ -88,35 +103,30 @@ class _HomePageState extends State<HomePage> {
                   onTap: () {},
                   child: Container(
                       padding: EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(20),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 2,
-                              blurRadius: 10,
-                              offset: Offset(0, 3),
-                            )
-                          ]),
+                      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(20), boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 2,
+                          blurRadius: 10,
+                          offset: Offset(0, 3),
+                        )
+                      ]),
                       child: Icon(CupertinoIcons.bars)),
                 ),
                 InkWell(
                   onTap: () {},
                   child: Container(
-                      padding: EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(20),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 2,
-                              blurRadius: 10,
-                              offset: Offset(0, 3),
-                            )
-                          ]),
-                      child: Icon(Icons.notifications),),
+                    padding: EdgeInsets.all(8),
+                    decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(20), boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 2,
+                        blurRadius: 10,
+                        offset: Offset(0, 3),
+                      )
+                    ]),
+                    child: Icon(Icons.notifications),
+                  ),
                 )
               ],
             ),
@@ -135,17 +145,14 @@ class _HomePageState extends State<HomePage> {
               child: Container(
                 width: double.infinity,
                 height: 50,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 2,
-                        blurRadius: 10,
-                        offset: Offset(0, 3),
-                      )
-                    ]),
+                decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(20), boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 2,
+                    blurRadius: 10,
+                    offset: Offset(0, 3),
+                  )
+                ]),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 10,
@@ -205,17 +212,14 @@ class _HomePageState extends State<HomePage> {
                     padding: EdgeInsets.symmetric(horizontal: 10),
                     child: Container(
                       padding: EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 2,
-                              blurRadius: 10,
-                              offset: Offset(0, 3),
-                            )
-                          ]),
+                      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10), boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 2,
+                          blurRadius: 10,
+                          offset: Offset(0, 3),
+                        )
+                      ]),
                       child: Image.asset(
                         "assets/burger.png",
                         width: 50,
@@ -227,17 +231,14 @@ class _HomePageState extends State<HomePage> {
                     padding: EdgeInsets.symmetric(horizontal: 10),
                     child: Container(
                       padding: EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 2,
-                              blurRadius: 10,
-                              offset: Offset(0, 3),
-                            )
-                          ]),
+                      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10), boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 2,
+                          blurRadius: 10,
+                          offset: Offset(0, 3),
+                        )
+                      ]),
                       child: Image.asset(
                         "assets/donat.png",
                         width: 50,
@@ -249,17 +250,14 @@ class _HomePageState extends State<HomePage> {
                     padding: EdgeInsets.symmetric(horizontal: 10),
                     child: Container(
                       padding: EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 2,
-                              blurRadius: 10,
-                              offset: Offset(0, 3),
-                            )
-                          ]),
+                      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10), boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 2,
+                          blurRadius: 10,
+                          offset: Offset(0, 3),
+                        )
+                      ]),
                       child: Image.asset(
                         "assets/pizza.png",
                         width: 50,
@@ -271,17 +269,14 @@ class _HomePageState extends State<HomePage> {
                     padding: EdgeInsets.symmetric(horizontal: 10),
                     child: Container(
                       padding: EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 2,
-                              blurRadius: 10,
-                              offset: Offset(0, 3),
-                            )
-                          ]),
+                      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10), boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 2,
+                          blurRadius: 10,
+                          offset: Offset(0, 3),
+                        )
+                      ]),
                       child: Image.asset(
                         "assets/cola.png",
                         width: 50,
@@ -293,17 +288,14 @@ class _HomePageState extends State<HomePage> {
                     padding: EdgeInsets.symmetric(horizontal: 10),
                     child: Container(
                       padding: EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 2,
-                              blurRadius: 10,
-                              offset: Offset(0, 3),
-                            )
-                          ]),
+                      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10), boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 2,
+                          blurRadius: 10,
+                          offset: Offset(0, 3),
+                        )
+                      ]),
                       child: Image.asset(
                         "assets/kentang.png",
                         width: 50,
@@ -328,7 +320,10 @@ class _HomePageState extends State<HomePage> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               gradient: const LinearGradient(
-                colors: [Colors.orange, Colors.white],
+                colors: [
+                  Colors.orange,
+                  Colors.white
+                ],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
               ),
@@ -344,13 +339,7 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         const SizedBox(
                           width: 170,
-                          child: Text("Special Deals \nFor Today",
-                              maxLines: 6,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white)),
+                          child: Text("Special Deals \nFor Today", maxLines: 6, overflow: TextOverflow.ellipsis, style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white)),
                         ),
                         SizedBox(height: 6),
                         ElevatedButton(
@@ -406,17 +395,14 @@ class _HomePageState extends State<HomePage> {
                   child: Container(
                     width: 160,
                     height: 225,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 2,
-                            blurRadius: 10,
-                            offset: Offset(0, 3),
-                          )
-                        ]),
+                    decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10), boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 2,
+                        blurRadius: 10,
+                        offset: Offset(0, 3),
+                      )
+                    ]),
                     child: Padding(
                       padding: EdgeInsets.symmetric(horizontal: 10),
                       child: Column(
@@ -434,8 +420,7 @@ class _HomePageState extends State<HomePage> {
                           const SizedBox(height: 4),
                           Text(
                             popularList[index]["name"]!,
-                            style: const TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
+                            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(height: 4),
                           Text(
@@ -457,18 +442,10 @@ class _HomePageState extends State<HomePage> {
                               GestureDetector(
                                 onTap: () {
                                   setState(() {
-                                    isLovedPopular[index] =
-                                        !isLovedPopular[index];
+                                    isLovedPopular[index] = !isLovedPopular[index];
                                   });
                                 },
-                                child: Icon(
-                                    isLovedPopular[index]
-                                        ? Icons.favorite
-                                        : Icons.favorite_border,
-                                    color: isLovedPopular[index]
-                                        ? Colors.red
-                                        : Colors.orange,
-                                    size: 26),
+                                child: Icon(isLovedPopular[index] ? Icons.favorite : Icons.favorite_border, color: isLovedPopular[index] ? Colors.red : Colors.orange, size: 26),
                               ),
                             ],
                           )
@@ -531,8 +508,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Padding buildRecommendedItem(BuildContext context, int index, String itemName,
-      String description, String price) {
+  Padding buildRecommendedItem(BuildContext context, int index, String itemName, String description, String price) {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 10),
       child: Container(
@@ -616,19 +592,11 @@ class _HomePageState extends State<HomePage> {
                     onTap: () {
                       setState(
                         () {
-                          isLovedRecommended[index] =
-                              !isLovedRecommended[index];
+                          isLovedRecommended[index] = !isLovedRecommended[index];
                         },
                       );
                     },
-                    child: Icon(
-                        isLovedRecommended[index]
-                            ? Icons.favorite
-                            : Icons.favorite_border,
-                        color: isLovedRecommended[index]
-                            ? Colors.red
-                            : Colors.orange,
-                        size: 26),
+                    child: Icon(isLovedRecommended[index] ? Icons.favorite : Icons.favorite_border, color: isLovedRecommended[index] ? Colors.red : Colors.orange, size: 26),
                   ),
                   GestureDetector(
                     onTap: () {
@@ -638,8 +606,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       );
                     },
-                    child: const Icon(CupertinoIcons.cart,
-                        color: Colors.orange, size: 26),
+                    child: const Icon(CupertinoIcons.cart, color: Colors.orange, size: 26),
                   ),
                 ],
               ),
