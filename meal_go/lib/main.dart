@@ -7,6 +7,7 @@ import 'package:meal_go/home.dart';
 import 'package:meal_go/search_food.dart';
 import 'package:meal_go/cart.dart';
 import 'package:meal_go/checkout.dart';
+import 'package:meal_go/restaurant_list_screen.dart';
 import 'package:meal_go/orderplaced.dart';
 import 'package:meal_go/restaurant_home.dart';
 import 'package:meal_go/settings.dart';
@@ -44,10 +45,14 @@ class MyApp extends StatelessWidget {
       //home: SignIn(),
       // home: CheckoutPage(),
       home: const HomePage(),
-      // home: RestaurantHome(),
+      //home: RestaurantList(),
+      //home: RestaurantHome(),
+      // home: Settings(),
+      //home: Settings(),
+      //home: RestaurantHome(),
       //home: UsersProfile(),
       routes: {
-        '/orderplaced': (context) => const OrderPlacedPage(),
+        // '/orderplaced': (context) => const OrderPlacedPage(),
         '/backtohomepage': (context) => HomePage(),
         '/searchfood': (context) => const SearchFood(),
         '/cartpage': (context) => CartPage(),
