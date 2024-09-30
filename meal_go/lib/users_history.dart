@@ -30,23 +30,21 @@ class OrderHistory extends StatelessWidget {
             title: 'BBN! Burger Bang Noel',
             items: ['1x Burger super', '1x mac n cheese'],
             status: 'Food delivered',
-            imageUrl: 'assets/burger.png', // Replace with actual image URL
+            imageUrl: 'assets/burger.png',
           ),
           _buildOrderCard(
             date: 'September 12, 6:15',
             title: 'Nasi Ayam Buk Vivi',
             items: ['1x Nasi Ayam', '1x Rendang Ayam'],
             status: 'Canceled',
-            imageUrl:
-                'https://via.placeholder.com/50', // Replace with actual image URL
+            imageUrl: 'https://via.placeholder.com/50',
           ),
           _buildOrderCard(
             date: 'September 10, 12:15',
             title: 'Promise Miee',
             items: ['1x Mie Ayam special', '1x Es teh maniez'],
             status: 'Food delivered',
-            imageUrl:
-                'https://via.placeholder.com/50', // Replace with actual image URL
+            imageUrl: 'https://via.placeholder.com/50',
           ),
         ],
       ),
@@ -125,7 +123,7 @@ class OrderHistory extends StatelessWidget {
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(Colors.orange),
                 foregroundColor: MaterialStateProperty.all(Colors.black),
-              ),
+              ), // Menetapkan warna tetapnya
               onPressed: () {},
               child: const Text('Repeat'),
             )

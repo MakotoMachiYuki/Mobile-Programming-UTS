@@ -24,7 +24,6 @@ class UsersProfile extends StatelessWidget {
       ),
       body: Column(
         children: [
-          // Profile Header Section
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             color: Colors.orange,
@@ -63,9 +62,7 @@ class UsersProfile extends StatelessWidget {
                   ],
                 ),
                 IconButton(
-                  onPressed: () {
-                    // Add functionality for editing profile if needed
-                  },
+                  onPressed: () {},
                   icon: const Icon(
                     CupertinoIcons.pencil_ellipsis_rectangle,
                     color: Colors.black,
@@ -78,7 +75,6 @@ class UsersProfile extends StatelessWidget {
             height: 1,
             color: Colors.grey,
           ),
-          // Menu Options
           Expanded(
             child: ListView(
               children: [
@@ -87,7 +83,7 @@ class UsersProfile extends StatelessWidget {
                   title: const Text('Order History'),
                   trailing: const Icon(CupertinoIcons.chevron_forward),
                   onTap: () {
-                    // Navigate to Order History page
+                    // navigasi page order history
                   },
                 ),
                 Divider(
@@ -99,7 +95,7 @@ class UsersProfile extends StatelessWidget {
                   title: const Text('My Address'),
                   trailing: const Icon(CupertinoIcons.chevron_forward),
                   onTap: () {
-                    // Navigate to My Address page
+                    // navigasi page my address
                   },
                 ),
               ],
