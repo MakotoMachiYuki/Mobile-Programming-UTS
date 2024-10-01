@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:meal_go/home.dart';
+import 'package:meal_go/screen/sign_in/sign_in_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'privacypolicy.dart';
+import 'changepasswordpage.dart';
 
 class Settings extends StatefulWidget {
   const Settings({super.key});
@@ -10,7 +13,7 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
-  bool _notificationsEnabled = true;
+  bool _notificationsEnabled = false;
   bool _darkModeEnabled = false;
   List<String> selectedPaymentMethods = [];
   bool _policyAccepted = false;
@@ -30,11 +33,26 @@ class _SettingsState extends State<Settings> {
         _prefsLoaded = true;
       });
     } catch (e) {
-      print('Error loading shared preferences: $e');
+      print('Error loading your preferences: $e');
       setState(() {
         _prefsLoaded = true;
       });
     }
+  }
+
+  void _showNotificationSnackbar() {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          'Notifications Turned On',
+          style: TextStyle(
+              fontSize: 15, fontWeight: FontWeight.normal, color: Colors.black),
+          textAlign: TextAlign.center,
+        ),
+        duration: Duration(seconds: 1),
+        backgroundColor: Colors.orange.shade100,
+      ),
+    );
   }
 
   @override
@@ -43,7 +61,12 @@ class _SettingsState extends State<Settings> {
       appBar: AppBar(
         leading: IconButton(
           padding: EdgeInsets.all(10),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => HomePage()),
+            );
+          },
           iconSize: 15,
           icon: Icon(Icons.arrow_back_ios_new),
         ),
@@ -53,7 +76,7 @@ class _SettingsState extends State<Settings> {
         ),
         centerTitle: true,
         toolbarHeight: 44,
-        backgroundColor: Colors.amber,
+        backgroundColor: Colors.orange.shade100,
       ),
       body: _prefsLoaded
           ? ListView(
@@ -67,6 +90,9 @@ class _SettingsState extends State<Settings> {
                     setState(() {
                       _notificationsEnabled = value;
                     });
+                    if (value) {
+                      _showNotificationSnackbar();
+                    }
                   },
                 ),
                 SwitchListTile(
@@ -128,13 +154,28 @@ class _SettingsState extends State<Settings> {
                   title: Text('Change Password'),
                   trailing: Icon(Icons.arrow_right),
                   onTap: () {
-                    //Code buat change pass
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ChangePasswordPage()),
+                    );
+                  },
+                ),
+                ListTile(
+                  leading: Icon(Icons.logout),
+                  title: Text('Log Out'),
+                  trailing: Icon(Icons.arrow_right),
+                  onTap: () async {
+                    final result = await Navigator.push<bool>(
+                      context,
+                      MaterialPageRoute(builder: (context) => SignIn()),
+                    );
                   },
                 ),
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8),
                     child: Text(
                       '© 2024 Go Meal. All rights reserved.',
                       textAlign: TextAlign.center,
@@ -174,7 +215,16 @@ class _MultiSelectDialogState extends State<_MultiSelectDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text('Select Payment Methods'),
+      title: Align(
+        alignment: Alignment.center,
+        child: Text(
+          'Select Preferred Payment Methods',
+          style: TextStyle(
+            fontSize: 19,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+      ),
       content: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,

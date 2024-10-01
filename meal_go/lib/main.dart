@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
       //home: const HomePage(),
       //home: RestaurantList(),
       //home: RestaurantHome(),
-      //home: Settings(),
+      home: Settings(),
       //home: RestaurantHome(),
       //home: UsersProfile(),
       routes: {
