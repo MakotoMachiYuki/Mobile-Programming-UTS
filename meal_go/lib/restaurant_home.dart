@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:meal_go/model/restaurant_list.dart';
+import 'package:meal_go/restaurant_list_screen.dart';
 import 'package:provider/provider.dart';
 import 'cart.dart';
 import 'model/menuCatalog.dart';
@@ -48,7 +50,7 @@ class AddToCart extends StatelessWidget {
                     Icons.shopping_cart_outlined,
                     semanticLabel: 'ADD',
                   ),
-            isInCart ? Text('ADD') : Text('ADDED'),
+            isInCart ? Text('ADDED') : Text('ADD'),
           ],
         ),
       ),
@@ -57,7 +59,9 @@ class AddToCart extends StatelessWidget {
 }
 
 class RestaurantHome extends StatefulWidget {
-  const RestaurantHome({super.key});
+  final RestaurantListModel restaurant;
+
+  const RestaurantHome({Key? key, required this.restaurant}) : super(key: key);
 
   @override
   State<RestaurantHome> createState() => _RestaurantHomeState();
@@ -77,7 +81,9 @@ class _RestaurantHomeState extends State<RestaurantHome> {
         totalProductPerItem[food.name] = 1;
       }
     }
-    filteredFoods = MenuCatalogModel.categories.expand((category) => category.foods).toList();
+    filteredFoods = MenuCatalogModel.categories
+        .expand((category) => category.foods)
+        .toList();
   }
 
   void increment(String item) {
@@ -102,7 +108,9 @@ class _RestaurantHomeState extends State<RestaurantHome> {
       activeSearch = !activeSearch;
       if (!activeSearch) {
         searching.clear();
-        filteredFoods = MenuCatalogModel.categories.expand((category) => category.foods).toList();
+        filteredFoods = MenuCatalogModel.categories
+            .expand((category) => category.foods)
+            .toList();
       }
     });
   }
@@ -218,7 +226,8 @@ class _RestaurantHomeState extends State<RestaurantHome> {
                               children: [
                                 AddToCart(
                                   food: food,
-                                  totalFood: totalProductPerItem[food.name] ?? 0,
+                                  totalFood:
+                                      totalProductPerItem[food.name] ?? 0,
                                 ),
                               ],
                             ),
@@ -247,7 +256,9 @@ class _RestaurantHomeState extends State<RestaurantHome> {
               child: Container(
                 width: MediaQuery.of(context).size.width * 0.95,
                 height: 100,
-                decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10)),
                 child: Row(
                   children: [
                     Container(
@@ -255,7 +266,8 @@ class _RestaurantHomeState extends State<RestaurantHome> {
                       width: 100,
                       height: 100,
                       decoration: BoxDecoration(
-                        image: DecorationImage(image: AssetImage(food.image), fit: BoxFit.cover),
+                        image: DecorationImage(
+                            image: AssetImage(food.image), fit: BoxFit.cover),
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
@@ -307,7 +319,9 @@ class _RestaurantHomeState extends State<RestaurantHome> {
         leading: !activeSearch
             ? IconButton(
                 padding: EdgeInsets.all(8),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/restaurantlist');
+                },
                 iconSize: 20,
                 icon: Icon(Icons.arrow_back_ios_new),
               )
@@ -321,11 +335,12 @@ class _RestaurantHomeState extends State<RestaurantHome> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                  contentPadding:
+                      EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                 ),
               )
-            : const Text(
-                'Store Name',
+            : Text(
+                widget.restaurant.name,
                 style: TextStyle(fontSize: 20),
               ),
         actions: [
@@ -359,7 +374,8 @@ class _RestaurantHomeState extends State<RestaurantHome> {
                     left: MediaQuery.of(context).size.width * 0.025,
                     bottom: 0,
                     child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                       width: MediaQuery.of(context).size.width * 0.95,
                       height: 150,
                       decoration: BoxDecoration(
@@ -396,7 +412,8 @@ class _RestaurantHomeState extends State<RestaurantHome> {
                                     borderRadius: BorderRadius.circular(10),
                                     boxShadow: [
                                       BoxShadow(
-                                        color: const Color(0xFF333333).withOpacity(0.5),
+                                        color: const Color(0xFF333333)
+                                            .withOpacity(0.5),
                                         spreadRadius: 3,
                                         blurRadius: 10,
                                         offset: Offset(0, 5),
@@ -404,13 +421,16 @@ class _RestaurantHomeState extends State<RestaurantHome> {
                                     ],
                                   ),
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text('5.0'),
                                       Row(
-                                        crossAxisAlignment: CrossAxisAlignment.center,
-                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
                                         children: List.generate(
                                           5,
                                           (index) => const Icon(
@@ -508,20 +528,13 @@ class _RestaurantHomeState extends State<RestaurantHome> {
           if (index == 2) {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => CartPage()),
+              MaterialPageRoute(
+                  builder: (context) =>
+                      CartPage(restaurant: widget.restaurant)),
             );
           }
         },
       ),
     );
-  }
-}
-
-class MyWidget extends StatelessWidget {
-  const MyWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
   }
 }

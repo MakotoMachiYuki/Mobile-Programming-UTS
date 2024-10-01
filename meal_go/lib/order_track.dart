@@ -4,12 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:meal_go/api.dart';
+import 'package:meal_go/home.dart';
+import 'package:meal_go/model/cart.dart';
+import 'package:meal_go/model/menuCatalog.dart';
+import 'package:meal_go/model/restaurants.dart';
 import 'package:meal_go/rating.dart';
 import 'location.dart';
 import "package:http/http.dart" as http;
+import 'package:meal_go/model/restaurant_list.dart';
 
 class OrderTrack extends StatefulWidget {
-  const OrderTrack({super.key});
+  final RestaurantListModel restaurant;
+  final CartModel cart;
+  const OrderTrack({super.key, required this.restaurant, required this.cart});
 
   @override
   State<OrderTrack> createState() => _OrderDetailstate();
@@ -19,13 +26,17 @@ class _OrderDetailstate extends State<OrderTrack> {
   LocationService locationService = LocationService();
   double lat = 0.0;
   double lng = 0.0;
-  double lat1 = -6.161976789496748;
-  double lng1 = 106.78967049440392;
+  double lat1 = 0.0;
+  double lng1 = 0.0;
+
   bool loading = true;
 
   @override
   void initState() {
     super.initState();
+    lat1 = widget.restaurant.latitude;
+    lng1 = widget.restaurant.longitude;
+
     getlocation();
   }
 
@@ -55,6 +66,17 @@ class _OrderDetailstate extends State<OrderTrack> {
             .toList();
       }
     });
+  }
+
+  List<Widget> buildOrderItems() {
+    return widget.cart.food.map((item) {
+      return ListTile(
+        leading: Icon(Icons.food_bank),
+        title: Text(item.name),
+        subtitle: Text("Jumlah: ${widget.cart.itemPerFood(item)}"),
+        trailing: Text("Rp ${item.price * widget.cart.itemPerFood(item)}"),
+      );
+    }).toList();
   }
 
   @override
@@ -92,7 +114,8 @@ class _OrderDetailstate extends State<OrderTrack> {
                   ),
                   children: [
                     TileLayer(
-                      urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                      urlTemplate:
+                          'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
                       userAgentPackageName: 'com.example.app',
                     ),
                     MarkerLayer(
@@ -133,7 +156,8 @@ class _OrderDetailstate extends State<OrderTrack> {
                     initialChildSize: 0.22,
                     minChildSize: 0.22,
                     maxChildSize: 0.8,
-                    builder: (BuildContext context, ScrollController scrollController) {
+                    builder: (BuildContext context,
+                        ScrollController scrollController) {
                       return Container(
                         padding: EdgeInsets.symmetric(
                           horizontal: 15,
@@ -174,7 +198,8 @@ class _OrderDetailstate extends State<OrderTrack> {
                               children: [
                                 CircleAvatar(
                                   radius: 70,
-                                  backgroundImage: NetworkImage('https://i.ebayimg.com/images/g/B~gAAOSwhNthhdjn/s-l1200.jpg'),
+                                  backgroundImage: NetworkImage(
+                                      'https://i.ebayimg.com/images/g/B~gAAOSwhNthhdjn/s-l1200.jpg'),
                                 ),
                                 SizedBox(width: 15),
                                 Column(
@@ -182,16 +207,15 @@ class _OrderDetailstate extends State<OrderTrack> {
                                   children: [
                                     Text(
                                       'Driver : Henry',
-
-                                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold),
                                     ),
                                     SizedBox(height: 5),
                                     Row(
                                       children: [
-
-                                        Icon(Icons.star, color: Colors.orange, size: 16),
-
+                                        Icon(Icons.star,
+                                            color: Colors.orange, size: 16),
                                         SizedBox(width: 5),
                                         Text(
                                           '4.8 (120 reviews)',
@@ -221,12 +245,13 @@ class _OrderDetailstate extends State<OrderTrack> {
                             SizedBox(height: 10),
                             ListTile(
                               leading: Icon(Icons.restaurant_menu),
-                              title: Text("Restaurant: Burger King"),
+                              title:
+                                  Text("Restaurant: ${widget.restaurant.name}"),
                               subtitle: Text("Estimated delivery time: 15 min"),
                             ),
-                            ListTile(
-                              leading: Icon(Icons.food_bank),
-                              title: Text("Your order: 2x ayam bakar"),
+                            ...buildOrderItems(),
+                            SizedBox(
+                              height: 20,
                             ),
                             SizedBox(
                               height: 20,
@@ -240,7 +265,8 @@ class _OrderDetailstate extends State<OrderTrack> {
                                 );
                               },
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color.fromARGB(255, 253, 224, 171),
+                                backgroundColor:
+                                    const Color.fromARGB(255, 253, 224, 171),
                               ),
                               child: const Text(
                                 'Finish Order',
@@ -256,11 +282,12 @@ class _OrderDetailstate extends State<OrderTrack> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Rating()),
+                                      builder: (context) => HomePage()),
                                 );
                               },
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color.fromARGB(255, 255, 166, 0),
+                                backgroundColor:
+                                    const Color.fromARGB(255, 255, 166, 0),
                               ),
                               child: const Text(
                                 'Cancel Order',

@@ -2,15 +2,15 @@ class RestaurantListModel {
   final int id;
   final String name;
   final String image;
-  final double lat;
-  final double lng;
+  final double latitude;
+  final double longitude;
 
   RestaurantListModel(
     this.id,
     this.name,
     this.image,
-    this.lat,
-    this.lng,
+    this.latitude,
+    this.longitude,
   );
 
   @override

@@ -15,14 +15,14 @@ class RestaurantsModel {
         -6.1388418951299375,
         106.72964034547913),
     RestaurantListModel(3, 'A&W', 'assets/images/restaurant/aw.jpeg',
-        -6.158804049097653, 106.80490921261674),
+        -6.153483367738778, 106.79675996047858),
     RestaurantListModel(4, 'KFC', 'assets/images/restaurant/kfc.jpeg',
-        -6.1707382798951, 106.78533953674432),
+        -6.182658240515656, 106.73895127686004),
     RestaurantListModel(
         5,
         'Emiya Kitchen',
         'assets/images/restaurant/chaldea.jpeg',
-        -76.22242827225533,
-        29.331567633255016),
+        -6.168337316691201,
+        106.78408367206184),
   ];
 }

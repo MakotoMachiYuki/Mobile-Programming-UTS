@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:meal_go/model/restaurant_list.dart';
+import 'package:meal_go/orderplaced.dart';
+import 'package:meal_go/restaurant_home.dart';
 import 'package:provider/provider.dart';
+import 'package:meal_go/model/menuCatalog.dart';
 import 'model/cart.dart';
 
 class CartPage extends StatelessWidget {
-  const CartPage({super.key});
+  final RestaurantListModel restaurant;
+
+  const CartPage({Key? key, required this.restaurant}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +43,12 @@ class CartPage extends StatelessWidget {
                 child: cart.food.isEmpty ? EmptyCart() : FoodList(cart: cart),
               ),
               if (!cart.food.isEmpty) const Divider(height: 4, color: Colors.black),
-              if (!cart.food.isEmpty) TotalPayment(cart: cart),
+              if (!cart.food.isEmpty)
+                TotalPayment(
+                  cart: cart,
+                  restaurant: restaurant,
+                  // menuCatalog: menuCatalog,
+                ),
             ],
           );
         },
@@ -199,15 +210,17 @@ class EmptyCart extends StatelessWidget {
 
 class TotalPayment extends StatelessWidget {
   final CartModel cart;
+  final orderFee = 10000;
+  // final MenuCatalogModel menuCatalog;
+  final RestaurantListModel restaurant;
 
-  const TotalPayment({required this.cart});
+  const TotalPayment({Key? key, required this.restaurant, required this.cart}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: SizedBox(
-        height: 150,
-        width: double.infinity,
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
@@ -223,6 +236,7 @@ class TotalPayment extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
+                  SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -234,20 +248,32 @@ class TotalPayment extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text('Order Price'),
-                      Text('Rp. ${10000}'),
+                      Text('Rp. ${orderFee}'),
                     ],
                   ),
+                  Divider(
+                    color: Colors.black,
+                  ),
+                  SizedBox(height: 5),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('Totall Price'),
-                      Text('Rp. ${10000 + cart.totalPrice}'),
+                      Text('Total Price'),
+                      Text('Rp. ${orderFee + cart.totalPrice}'),
                     ],
                   ),
-                  const SizedBox(width: 24),
+                  const SizedBox(
+                    width: 24,
+                    height: 10,
+                  ),
                   FilledButton(
                     onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Buying not supported yet.')));
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => OrderPlacedPage(restaurant: restaurant, cart: cart),
+                        ),
+                      );
                     },
                     style: TextButton.styleFrom(foregroundColor: Colors.white),
                     child: const Text('Order Food'),

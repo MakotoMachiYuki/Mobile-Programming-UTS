@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meal_go/model/menuCatalog.dart';
 import 'package:meal_go/model/restaurants.dart';
 import 'package:meal_go/restaurant_home.dart';
 
@@ -32,7 +33,9 @@ class _RestaurantListState extends State<RestaurantList> {
         leading: !activeSearch
             ? IconButton(
                 padding: const EdgeInsets.all(8),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/backtohomepage');
+                },
                 iconSize: 20,
                 icon: const Icon(Icons.arrow_back_ios_new),
               )
@@ -92,7 +95,8 @@ class _RestaurantListState extends State<RestaurantList> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => RestaurantHome(),
+                          builder: (context) =>
+                              RestaurantHome(restaurant: restaurant),
                         ),
                       );
                     },
