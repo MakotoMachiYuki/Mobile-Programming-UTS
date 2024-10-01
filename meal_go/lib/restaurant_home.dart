@@ -156,8 +156,7 @@ class _RestaurantHomeState extends State<RestaurantHome> {
                         ),
                       ),
                       const SizedBox(height: 10),
-                      const Text(
-                          'This is my description about his menu i know this is few ingredients tthat can make this disk'),
+                      const Text('This is my description about his menu i know this is few ingredients that can make this disk'),
                       const SizedBox(height: 10),
                       SizedBox(
                         width: double.infinity,
