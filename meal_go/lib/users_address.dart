@@ -8,7 +8,7 @@ class MyAddress extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.orange,
+        backgroundColor: Colors.orange.shade100,
         elevation: 0,
         centerTitle: true,
         title: const Text(

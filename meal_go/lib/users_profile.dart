@@ -26,7 +26,7 @@ class UsersProfile extends StatelessWidget {
         children: [
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16),
-            color: Colors.orange,
+            color: Colors.orange.shade100,
             height: 120,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
