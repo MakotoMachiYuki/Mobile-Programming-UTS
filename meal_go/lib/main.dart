@@ -55,7 +55,7 @@ class MyApp extends StatelessWidget {
         // '/orderplaced': (context) => const OrderPlacedPage(),
         '/backtohomepage': (context) => HomePage(),
         '/searchfood': (context) => const SearchFood(),
-        // '/cartpage': (context) => CartPage(),
+        //'/cartpage': (context) => CartPage(),
         '/orderhistory': (context) => OrderHistory(),
         '/address': (context) => MyAddress(),
         '/users_profile': (context) => UsersProfile(),
