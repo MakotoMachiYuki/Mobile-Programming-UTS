@@ -30,7 +30,8 @@ class OrderHistory extends StatelessWidget {
             title: 'BBN! Burger Bang Noel',
             items: ['1x Burger super', '1x mac n cheese'],
             status: 'Food delivered',
-            imageUrl: 'assets/burger.png', // Replace with actual image URL
+            imageUrl:
+                'https://www.dapurkobe.co.id/wp-content/uploads/beef-burger-special.jpg',
           ),
           _buildOrderCard(
             date: 'September 12, 6:15',
@@ -38,7 +39,7 @@ class OrderHistory extends StatelessWidget {
             items: ['1x Nasi Ayam', '1x Rendang Ayam'],
             status: 'Canceled',
             imageUrl:
-                'https://via.placeholder.com/50', // Replace with actual image URL
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7wECQITmONvMpPXlTErmLClquJOz5G9zKWQ&s',
           ),
           _buildOrderCard(
             date: 'September 10, 12:15',
@@ -46,7 +47,7 @@ class OrderHistory extends StatelessWidget {
             items: ['1x Mie Ayam special', '1x Es teh maniez'],
             status: 'Food delivered',
             imageUrl:
-                'https://via.placeholder.com/50', // Replace with actual image URL
+                'https://awsimages.detik.net.id/community/media/visual/2023/09/17/resep-mie-pedas-tteokbokki-dan-sosis_43.jpeg?w=1200',
           ),
         ],
       ),
@@ -61,7 +62,7 @@ class OrderHistory extends StatelessWidget {
     required String imageUrl,
   }) {
     return Card(
-      color: Colors.orange[100],
+      color: Colors.orange.shade100,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
       ),
@@ -115,7 +116,7 @@ class OrderHistory extends StatelessWidget {
                     status,
                     style: TextStyle(
                       fontSize: 14,
-                      color: status == 'Canceled' ? Colors.red : Colors.green,
+                      color: status == 'Canceled' ? Colors.red : Colors.blue,
                     ),
                   ),
                 ],
@@ -125,7 +126,7 @@ class OrderHistory extends StatelessWidget {
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(Colors.orange),
                 foregroundColor: MaterialStateProperty.all(Colors.black),
-              ),
+              ), // Menetapkan warna tetapnya
               onPressed: () {},
               child: const Text('Repeat'),
             )

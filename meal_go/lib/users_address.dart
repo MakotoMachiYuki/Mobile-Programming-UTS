@@ -8,7 +8,7 @@ class MyAddress extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.orange,
+        backgroundColor: Colors.orange.shade100,
         elevation: 0,
         centerTitle: true,
         title: const Text(
@@ -24,9 +24,7 @@ class MyAddress extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(CupertinoIcons.add, color: Colors.white),
-            onPressed: () {
-              // Add functionality for adding a new address
-            },
+            onPressed: () {},
           ),
         ],
       ),
@@ -53,9 +51,7 @@ class MyAddress extends StatelessWidget {
       subtitle: Text(address),
       trailing: IconButton(
         icon: const Icon(CupertinoIcons.pencil),
-        onPressed: () {
-          // Add functionality for editing address
-        },
+        onPressed: () {},
       ),
     );
   }

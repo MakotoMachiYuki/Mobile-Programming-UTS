@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'model/cart.dart';
+import 'model/menuCatalog.dart';
 import 'package:provider/provider.dart';
+import 'package:meal_go/edit_profile.dart';
 import 'package:meal_go/order_track.dart';
 import 'package:meal_go/screen/sign_in/sign_in_screen.dart';
-import 'package:meal_go/cart.dart';
 import 'package:meal_go/home.dart';
 import 'package:meal_go/search_food.dart';
 import 'package:meal_go/cart.dart';
@@ -11,9 +13,6 @@ import 'package:meal_go/restaurant_list_screen.dart';
 import 'package:meal_go/orderplaced.dart';
 import 'package:meal_go/restaurant_home.dart';
 import 'package:meal_go/settings.dart';
-// import 'restaurant_menu.dart';
-import 'model/cart.dart';
-import 'model/menuCatalog.dart';
 import 'package:meal_go/users_address.dart';
 import 'package:meal_go/users_history.dart';
 import 'package:meal_go/users_profile.dart';
@@ -57,6 +56,7 @@ class MyApp extends StatelessWidget {
         '/users_profile': (context) => const UsersProfile(),
         '/settings': (context) => const Settings(),
         '/restaurantlist': (context) => const RestaurantList(),
+        '/editprofile': (context) => EditProfile(),
       },
     );
   }
