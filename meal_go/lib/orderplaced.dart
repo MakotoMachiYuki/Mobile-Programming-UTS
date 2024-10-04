@@ -10,7 +10,9 @@ import 'package:meal_go/model/restaurant_list.dart';
 class OrderPlacedPage extends StatelessWidget {
   final RestaurantListModel restaurant;
   final CartModel cart;
-  const OrderPlacedPage({Key? key, required this.restaurant, required this.cart}) : super(key: key);
+  const OrderPlacedPage(
+      {Key? key, required this.restaurant, required this.cart})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,7 @@ class OrderPlacedPage extends StatelessWidget {
         backgroundColor: Colors.orange.shade100,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(CupertinoIcons.back, color: Colors.orange),
+          icon: const Icon(CupertinoIcons.back, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -29,7 +31,7 @@ class OrderPlacedPage extends StatelessWidget {
           restaurant.name,
           style: TextStyle(
             color: Colors.black,
-            fontSize: 25,
+            fontSize: 20,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -76,7 +78,9 @@ class OrderPlacedPage extends StatelessWidget {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => OrderTrack(restaurant: restaurant, cart: cart)),
+                          MaterialPageRoute(
+                              builder: (context) => OrderTrack(
+                                  restaurant: restaurant, cart: cart)),
                         );
                       },
                       style: ElevatedButton.styleFrom(
