@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
       // home: SignIn(),
       // home: CheckoutPage(),
       // home: const HomePage(),
-      // home: RestaurantList(),
+      home: RestaurantList(),
       // home: RestaurantHome(),
       // home: Settings(),
       // home: Settings(),

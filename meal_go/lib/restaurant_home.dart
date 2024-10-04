@@ -311,7 +311,9 @@ class _RestaurantHomeState extends State<RestaurantHome> {
         leading: !activeSearch
             ? IconButton(
                 padding: EdgeInsets.all(8),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pop(context);
+                },
                 iconSize: 20,
                 icon: Icon(Icons.arrow_back_ios_new),
               )
@@ -351,9 +353,12 @@ class _RestaurantHomeState extends State<RestaurantHome> {
                 children: [
                   Container(
                     height: 175,
-                    decoration: const BoxDecoration(
-                      color: Colors.red,
-                      borderRadius: BorderRadius.only(
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(widget.restaurant.image),
+                        fit: BoxFit.cover,
+                      ),
+                      borderRadius: const BorderRadius.only(
                         bottomLeft: Radius.circular(20),
                         bottomRight: Radius.circular(20),
                       ),
@@ -385,9 +390,9 @@ class _RestaurantHomeState extends State<RestaurantHome> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                const Text(
-                                  'Store Name',
-                                  style: TextStyle(
+                                Text(
+                                  widget.restaurant.name,
+                                  style: const TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,
                                   ),
