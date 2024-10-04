@@ -12,6 +12,7 @@ import 'package:meal_go/rating.dart';
 import 'location.dart';
 import "package:http/http.dart" as http;
 import 'package:meal_go/model/restaurant_list.dart';
+import 'package:flutter/cupertino.dart';
 
 class OrderTrack extends StatefulWidget {
   final RestaurantListModel restaurant;
@@ -83,21 +84,23 @@ class _OrderDetailstate extends State<OrderTrack> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.orange.shade100,
+        elevation: 0,
         leading: IconButton(
-          padding: EdgeInsets.all(10),
+          icon: const Icon(CupertinoIcons.back, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
           },
-          iconSize: 15,
-          icon: Icon(Icons.arrow_back_ios_new),
         ),
-        title: Text(
-          'Go Meal',
-          style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+        title: const Text(
+          "Go Meal",
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         centerTitle: true,
-        toolbarHeight: 40,
-        backgroundColor: const Color.fromARGB(255, 253, 224, 171),
       ),
       body: loading
           ? Center(
