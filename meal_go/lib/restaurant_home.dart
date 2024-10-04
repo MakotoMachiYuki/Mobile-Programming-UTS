@@ -71,6 +71,7 @@ class _RestaurantHomeState extends State<RestaurantHome> {
   bool activeSearch = false;
   Map<String, int> totalProductPerItem = {};
   List<Food> filteredFoods = [];
+  final int currentIndex = 1;
 
   @override
   void initState() {
@@ -515,14 +516,15 @@ class _RestaurantHomeState extends State<RestaurantHome> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         fixedColor: Colors.orange,
+        currentIndex: 1,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
+            icon: Icon(Icons.restaurant_menu),
+            label: 'Restaurants',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart),
@@ -533,7 +535,7 @@ class _RestaurantHomeState extends State<RestaurantHome> {
           if (index == 0) {
             Navigator.pushNamed(context, '/backtohomepage');
           } else if (index == 1) {
-            Navigator.pushNamed(context, '/searchfood');
+            Navigator.pushNamed(context, '/restaurantlist');
           } else if (index == 2) {
             Navigator.push(
               context,

@@ -13,6 +13,7 @@ class RestaurantList extends StatefulWidget {
 class _RestaurantListState extends State<RestaurantList> {
   final TextEditingController searching = TextEditingController();
   bool activeSearch = false;
+  final int _currentIndex = 1;
 
   void toggleSearch() {
     setState(() {
@@ -76,7 +77,7 @@ class _RestaurantListState extends State<RestaurantList> {
               'Popular Restaurant',
               style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: screenHeight * 0.06,
+                  fontSize: screenHeight * 0.05,
                   color: Colors.black),
             ),
           ),
@@ -159,21 +160,23 @@ class _RestaurantListState extends State<RestaurantList> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
+        fixedColor: Colors.orange,
+        currentIndex: _currentIndex,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
+            icon: Icon(Icons.restaurant_menu),
+            label: 'Restaurants',
           ),
         ],
         onTap: (index) {
           if (index == 0) {
             Navigator.pushNamed(context, '/backtohomepage');
           } else if (index == 1) {
-            Navigator.pushNamed(context, '/searchfood');
+            Navigator.pushNamed(context, '/restaurantlist');
           }
         },
       ),
