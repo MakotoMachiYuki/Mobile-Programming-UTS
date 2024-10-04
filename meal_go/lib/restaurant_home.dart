@@ -156,7 +156,8 @@ class _RestaurantHomeState extends State<RestaurantHome> {
                         ),
                       ),
                       const SizedBox(height: 10),
-                      const Text('This is my description about his menu i know this is few ingredients that can make this disk'),
+                      const Text(
+                          'This is my description about his menu i know this is few ingredients that can make this disk'),
                       const SizedBox(height: 10),
                       SizedBox(
                         width: double.infinity,
@@ -320,7 +321,7 @@ class _RestaurantHomeState extends State<RestaurantHome> {
             ? IconButton(
                 padding: EdgeInsets.all(8),
                 onPressed: () {
-                  Navigator.pushNamed(context, '/restaurantlist');
+                  Navigator.pop(context);
                 },
                 iconSize: 20,
                 icon: Icon(Icons.arrow_back_ios_new),
@@ -362,9 +363,12 @@ class _RestaurantHomeState extends State<RestaurantHome> {
                 children: [
                   Container(
                     height: 175,
-                    decoration: const BoxDecoration(
-                      color: Colors.red,
-                      borderRadius: BorderRadius.only(
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(widget.restaurant.image),
+                        fit: BoxFit.cover,
+                      ),
+                      borderRadius: const BorderRadius.only(
                         bottomLeft: Radius.circular(20),
                         bottomRight: Radius.circular(20),
                       ),
@@ -397,9 +401,9 @@ class _RestaurantHomeState extends State<RestaurantHome> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                const Text(
-                                  'Store Name',
-                                  style: TextStyle(
+                                Text(
+                                  widget.restaurant.name,
+                                  style: const TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,
                                   ),
