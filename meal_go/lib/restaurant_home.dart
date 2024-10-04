@@ -339,6 +339,11 @@ class _RestaurantHomeState extends State<RestaurantHome> {
                 widget.restaurant.name,
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
+        leading: IconButton(
+            icon: const Icon(CupertinoIcons.back, color: Colors.black),
+            onPressed: () {
+              Navigator.pushNamed(context, '/restaurantlist');
+            }),
         actions: [
           IconButton(
             onPressed: toggleSearch,
