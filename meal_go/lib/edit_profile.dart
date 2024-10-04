@@ -29,10 +29,11 @@ class _EditProfileState extends State<EditProfile> {
         centerTitle: true,
         title: const Text(
           'Edit Profile',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(
+              color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
         ),
         leading: IconButton(
-          icon: const Icon(CupertinoIcons.back, color: Colors.blue),
+          icon: const Icon(CupertinoIcons.back, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
           },

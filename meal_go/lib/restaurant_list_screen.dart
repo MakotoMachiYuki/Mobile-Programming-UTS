@@ -1,5 +1,5 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:meal_go/model/menuCatalog.dart';
 import 'package:meal_go/model/restaurants.dart';
 import 'package:meal_go/restaurant_home.dart';
 
@@ -13,6 +13,7 @@ class RestaurantList extends StatefulWidget {
 class _RestaurantListState extends State<RestaurantList> {
   final TextEditingController searching = TextEditingController();
   bool activeSearch = false;
+  final int _currentIndex = 1;
 
   void toggleSearch() {
     setState(() {
@@ -29,7 +30,7 @@ class _RestaurantListState extends State<RestaurantList> {
     double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFFFFA500),
+        backgroundColor: Colors.orange.shade100,
         leading: !activeSearch
             ? IconButton(
                 padding: const EdgeInsets.all(8),
@@ -37,7 +38,7 @@ class _RestaurantListState extends State<RestaurantList> {
                   Navigator.pushNamed(context, '/backtohomepage');
                 },
                 iconSize: 20,
-                icon: const Icon(Icons.arrow_back_ios_new),
+                icon: const Icon(CupertinoIcons.back, color: Colors.black),
               )
             : null,
         title: activeSearch
@@ -76,7 +77,7 @@ class _RestaurantListState extends State<RestaurantList> {
               'Popular Restaurant',
               style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: screenHeight * 0.06,
+                  fontSize: screenHeight * 0.05,
                   color: Colors.black),
             ),
           ),
@@ -159,21 +160,25 @@ class _RestaurantListState extends State<RestaurantList> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
+        fixedColor: Colors.orange,
+        currentIndex: _currentIndex,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            label: 'Cart',
+            icon: Icon(Icons.restaurant_menu),
+            label: 'Restaurants',
           ),
         ],
-        onTap: (index) {},
+        onTap: (index) {
+          if (index == 0) {
+            Navigator.pushNamed(context, '/backtohomepage');
+          } else if (index == 1) {
+            Navigator.pushNamed(context, '/restaurantlist');
+          }
+        },
       ),
     );
   }

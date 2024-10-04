@@ -1,8 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:form_validator/form_validator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:meal_go/screen/sign_in/login_screen.dart';
-import 'package:meal_go/screen/sign_in/sign_in_screen.dart';
+import 'package:meal_go/sign_in_screen.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -68,8 +68,7 @@ class _SignUpState extends State<SignUp> {
       await prefs.setString(email, password);
 
       if (mounted) {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => const Login()));
+        Navigator.pushNamed(context, '/login');
       }
     }
   }
@@ -80,9 +79,9 @@ class _SignUpState extends State<SignUp> {
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
         title: const Text('Sign Up'),
-        backgroundColor: const Color.fromRGBO(255, 204, 153, 1),
+        backgroundColor: Colors.orange.shade100,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
+          icon: const Icon(CupertinoIcons.back, color: Colors.black),
           onPressed: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const SignIn()));

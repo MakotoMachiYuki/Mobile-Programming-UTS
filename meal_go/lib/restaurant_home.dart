@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:meal_go/home.dart';
 import 'package:meal_go/model/restaurant_list.dart';
-import 'package:meal_go/restaurant_list_screen.dart';
 import 'package:provider/provider.dart';
 import 'cart.dart';
 import 'model/menuCatalog.dart';
@@ -11,7 +11,7 @@ class AddToCart extends StatelessWidget {
   final Food food;
   final int totalFood;
 
-  const AddToCart({required this.food, required this.totalFood});
+  const AddToCart({super.key, required this.food, required this.totalFood});
 
   @override
   Widget build(BuildContext context) {
@@ -28,18 +28,18 @@ class AddToCart extends StatelessWidget {
             },
       style: ButtonStyle(
           backgroundColor: MaterialStateProperty.resolveWith<Color?>((state) {
-            return Colors.amber;
+            return Colors.orange;
           }),
-          overlayColor: MaterialStateProperty.resolveWith<Color?>(
+          overlayColor: WidgetStateProperty.resolveWith<Color?>(
             (states) {
-              if (states.contains(MaterialState.pressed)) {
+              if (states.contains(WidgetState.pressed)) {
                 return Colors.orange;
               }
               return null;
             },
           ),
-          foregroundColor: MaterialStateProperty.all<Color>(Colors.black)),
-      child: Container(
+          foregroundColor: WidgetStateProperty.all<Color>(Colors.black)),
+      child: SizedBox(
         width: 80,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -50,7 +50,7 @@ class AddToCart extends StatelessWidget {
                     Icons.shopping_cart_outlined,
                     semanticLabel: 'ADD',
                   ),
-            isInCart ? Text('ADDED') : Text('ADD'),
+            isInCart ? const Text('ADDED') : const Text('ADD'),
           ],
         ),
       ),
@@ -72,6 +72,7 @@ class _RestaurantHomeState extends State<RestaurantHome> {
   bool activeSearch = false;
   Map<String, int> totalProductPerItem = {};
   List<Food> filteredFoods = [];
+  final int currentIndex = 1;
 
   @override
   void initState() {
@@ -117,21 +118,19 @@ class _RestaurantHomeState extends State<RestaurantHome> {
 
   void menuDetail(Food food) {
     showModalBottomSheet(
-      context: context, //*
-      isScrollControlled: true, //*
+      context: context,
+      isScrollControlled: true,
       builder: (context) {
-        //*
         var isInCart = context.select<CartModel, bool>(
           (cart) => cart.isContain(food),
         );
         return StatefulBuilder(
           builder: (BuildContext context, StateSetter setModalState) {
             return FractionallySizedBox(
-              //*
               heightFactor: 0.9,
               child: SingleChildScrollView(
                 child: Container(
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
                   child: Column(
                     children: [
                       Text(
@@ -142,12 +141,12 @@ class _RestaurantHomeState extends State<RestaurantHome> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Container(
                         width: 300,
                         height: 250,
                         decoration: BoxDecoration(
-                          color: Colors.amber,
+                          color: Colors.orange,
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Image.asset(
@@ -174,7 +173,7 @@ class _RestaurantHomeState extends State<RestaurantHome> {
                                       width: 40,
                                       height: 40,
                                       decoration: const BoxDecoration(
-                                        color: Colors.amber,
+                                        color: Colors.orange,
                                         shape: BoxShape.circle,
                                       ),
                                       child: IconButton(
@@ -186,23 +185,26 @@ class _RestaurantHomeState extends State<RestaurantHome> {
                                                   decrement(food.name);
                                                 });
                                               },
-                                        icon: Icon(Icons.exposure_minus_1),
+                                        icon:
+                                            const Icon(Icons.exposure_minus_1),
                                       ),
                                     ),
-                                    SizedBox(width: 15),
+                                    const SizedBox(width: 15),
                                     Text(
-                                      '${(totalProductPerItem[food.name] ?? 0 + 1).toString().padLeft(2, '0')}',
+                                      (totalProductPerItem[food.name] ?? 0 + 1)
+                                          .toString()
+                                          .padLeft(2, '0'),
                                       style: const TextStyle(
                                         fontSize: 30,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
-                                    SizedBox(width: 15),
+                                    const SizedBox(width: 15),
                                     Container(
                                       width: 40,
                                       height: 40,
                                       decoration: const BoxDecoration(
-                                        color: Colors.amber,
+                                        color: Colors.orange,
                                         shape: BoxShape.circle,
                                       ),
                                       child: IconButton(
@@ -214,14 +216,14 @@ class _RestaurantHomeState extends State<RestaurantHome> {
                                                   increment(food.name);
                                                 });
                                               },
-                                        icon: Icon(Icons.plus_one),
+                                        icon: const Icon(Icons.plus_one),
                                       ),
                                     ),
                                   ],
                                 ),
                               ],
                             ),
-                            SizedBox(width: 10),
+                            const SizedBox(width: 10),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
@@ -263,7 +265,7 @@ class _RestaurantHomeState extends State<RestaurantHome> {
                 child: Row(
                   children: [
                     Container(
-                      margin: EdgeInsets.only(right: 3),
+                      margin: const EdgeInsets.only(right: 3),
                       width: 100,
                       height: 100,
                       decoration: BoxDecoration(
@@ -278,7 +280,7 @@ class _RestaurantHomeState extends State<RestaurantHome> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: EdgeInsets.symmetric(vertical: 10),
+                            padding: const EdgeInsets.symmetric(vertical: 10),
                             child: Text(
                               food.name,
                               overflow: TextOverflow.ellipsis,
@@ -316,17 +318,7 @@ class _RestaurantHomeState extends State<RestaurantHome> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFFFFA500),
-        leading: !activeSearch
-            ? IconButton(
-                padding: EdgeInsets.all(8),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                iconSize: 20,
-                icon: Icon(Icons.arrow_back_ios_new),
-              )
-            : null,
+        backgroundColor: Colors.orange[100],
         title: activeSearch
             ? TextField(
                 decoration: InputDecoration(
@@ -342,21 +334,22 @@ class _RestaurantHomeState extends State<RestaurantHome> {
               )
             : Text(
                 widget.restaurant.name,
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
         actions: [
           IconButton(
             onPressed: toggleSearch,
             iconSize: 25,
+            color: Colors.black,
             icon: Icon(Icons.search),
           ),
-          SizedBox(width: 15),
+          const SizedBox(width: 15),
         ],
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
+            SizedBox(
               width: MediaQuery.of(context).size.width,
               height: 250,
               child: Stack(
@@ -383,14 +376,14 @@ class _RestaurantHomeState extends State<RestaurantHome> {
                       width: MediaQuery.of(context).size.width * 0.95,
                       height: 150,
                       decoration: BoxDecoration(
-                        color: Colors.amber,
+                        color: Colors.orange,
                         borderRadius: BorderRadius.circular(20),
                         boxShadow: [
                           BoxShadow(
                             color: const Color(0xFF333333).withOpacity(0.5),
                             spreadRadius: 3,
                             blurRadius: 10,
-                            offset: Offset(0, 5),
+                            offset: const Offset(0, 5),
                           ),
                         ],
                       ),
@@ -420,7 +413,7 @@ class _RestaurantHomeState extends State<RestaurantHome> {
                                             .withOpacity(0.5),
                                         spreadRadius: 3,
                                         blurRadius: 10,
-                                        offset: Offset(0, 5),
+                                        offset: const Offset(0, 5),
                                       ),
                                     ],
                                   ),
@@ -429,7 +422,7 @@ class _RestaurantHomeState extends State<RestaurantHome> {
                                         CrossAxisAlignment.center,
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Text('5.0'),
+                                      const Text('5.0'),
                                       Row(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.center,
@@ -449,7 +442,7 @@ class _RestaurantHomeState extends State<RestaurantHome> {
                               ],
                             ),
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           const Expanded(
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -491,14 +484,14 @@ class _RestaurantHomeState extends State<RestaurantHome> {
                 ],
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Column(
               children: MenuCatalogModel.categories.map(
                 (category) {
                   return ExpansionTile(
                     title: Text(
                       category.name,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
@@ -514,14 +507,16 @@ class _RestaurantHomeState extends State<RestaurantHome> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        fixedColor: Colors.orange,
+        currentIndex: 1,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
+            icon: Icon(Icons.restaurant_menu),
+            label: 'Restaurants',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart),
@@ -529,7 +524,11 @@ class _RestaurantHomeState extends State<RestaurantHome> {
           ),
         ],
         onTap: (index) {
-          if (index == 2) {
+          if (index == 0) {
+            Navigator.pushNamed(context, '/backtohomepage');
+          } else if (index == 1) {
+            Navigator.pushNamed(context, '/restaurantlist');
+          } else if (index == 2) {
             Navigator.push(
               context,
               MaterialPageRoute(
