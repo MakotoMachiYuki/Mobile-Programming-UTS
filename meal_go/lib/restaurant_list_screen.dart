@@ -1,5 +1,5 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:meal_go/model/menuCatalog.dart';
 import 'package:meal_go/model/restaurants.dart';
 import 'package:meal_go/restaurant_home.dart';
 
@@ -29,7 +29,7 @@ class _RestaurantListState extends State<RestaurantList> {
     double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFFFFA500),
+        backgroundColor: Colors.orange.shade100,
         leading: !activeSearch
             ? IconButton(
                 padding: const EdgeInsets.all(8),
@@ -37,7 +37,7 @@ class _RestaurantListState extends State<RestaurantList> {
                   Navigator.pushNamed(context, '/backtohomepage');
                 },
                 iconSize: 20,
-                icon: const Icon(Icons.arrow_back_ios_new),
+                icon: const Icon(CupertinoIcons.back, color: Colors.black),
               )
             : null,
         title: activeSearch
@@ -168,12 +168,14 @@ class _RestaurantListState extends State<RestaurantList> {
             icon: Icon(Icons.search),
             label: 'Search',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            label: 'Cart',
-          ),
         ],
-        onTap: (index) {},
+        onTap: (index) {
+          if (index == 0) {
+            Navigator.pushNamed(context, '/backtohomepage');
+          } else if (index == 1) {
+            Navigator.pushNamed(context, '/searchfood');
+          }
+        },
       ),
     );
   }

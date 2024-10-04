@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meal_go/home.dart';
-import 'package:meal_go/screen/sign_in/sign_in_screen.dart';
+import 'package:meal_go/sign_in_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'privacypolicy.dart';
 import 'changepasswordpage.dart';
@@ -172,10 +172,10 @@ class _SettingsState extends State<Settings> {
                     );
                   },
                 ),
-                Align(
+                const Align(
                   alignment: Alignment.bottomCenter,
                   child: Padding(
-                    padding: const EdgeInsets.all(8),
+                    padding: EdgeInsets.all(8),
                     child: Text(
                       '© 2024 Go Meal. All rights reserved.',
                       textAlign: TextAlign.center,

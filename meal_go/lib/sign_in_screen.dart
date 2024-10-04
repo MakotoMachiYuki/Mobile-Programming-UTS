@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:meal_go/screen/sign_in/login_screen.dart';
-import 'package:meal_go/screen/sign_in/sign_up_screen.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -12,6 +10,8 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       backgroundColor: Colors.orange,
       body: SafeArea(
@@ -32,7 +32,7 @@ class _SignInState extends State<SignIn> {
                           borderRadius: BorderRadius.circular(50)),
                       child: Image.asset(
                         'assets/images/Meal_go.png',
-                        height: 250.0,
+                        height: screenHeight * 0.5,
                         fit: BoxFit.contain,
                       ),
                     ),
@@ -41,7 +41,7 @@ class _SignInState extends State<SignIn> {
               ),
               const SizedBox(height: 20),
               const Text(
-                'Order Meal Go Today!',
+                'Order Go Meal Today!',
                 style: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
@@ -59,8 +59,7 @@ class _SignInState extends State<SignIn> {
                   padding: const EdgeInsets.symmetric(vertical: 15),
                 ),
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const Login()));
+                  Navigator.pushNamed(context, '/login');
                 },
                 child: const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -116,8 +115,7 @@ class _SignInState extends State<SignIn> {
                   padding: const EdgeInsets.symmetric(vertical: 15),
                 ),
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const SignUp()));
+                  Navigator.pushNamed(context, '/signup');
                 },
                 child: const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
