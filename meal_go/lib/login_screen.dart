@@ -70,6 +70,7 @@ class _LoginState extends State<Login> {
       child: Scaffold(
         resizeToAvoidBottomInset: true,
         appBar: AppBar(
+          centerTitle: true,
           title: const Text('Log In',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
           backgroundColor: Colors.orange.shade100,

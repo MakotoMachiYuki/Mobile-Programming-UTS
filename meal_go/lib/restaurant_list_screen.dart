@@ -30,6 +30,7 @@ class _RestaurantListState extends State<RestaurantList> {
     double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: Colors.orange.shade100,
         leading: IconButton(
           padding: const EdgeInsets.all(8),
