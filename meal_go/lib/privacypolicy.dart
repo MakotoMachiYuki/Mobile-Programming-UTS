@@ -66,7 +66,7 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
         ),
         title: Text(
           'Go Meal Privacy Policy',
-          style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
         toolbarHeight: 44,
