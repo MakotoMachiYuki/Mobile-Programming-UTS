@@ -41,10 +41,7 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
         _policyAccepted = status;
       });
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-            content: Text(status
-                ? 'Go Meal Privacy Policy accepted'
-                : 'Go Meal Privacy Policy denied')),
+        SnackBar(content: Text(status ? 'Go Meal Privacy Policy accepted' : 'Go Meal Privacy Policy denied')),
       );
     } catch (e) {
       print('Error saving shared preferences: $e');
