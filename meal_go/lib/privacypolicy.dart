@@ -41,7 +41,10 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
         _policyAccepted = status;
       });
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(status ? 'Policy accepted' : 'Policy denied')),
+        SnackBar(
+            content: Text(status
+                ? 'Go Meal Privacy Policy accepted'
+                : 'Go Meal Privacy Policy denied')),
       );
     } catch (e) {
       print('Error saving shared preferences: $e');
@@ -67,7 +70,7 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
         ),
         centerTitle: true,
         toolbarHeight: 44,
-        backgroundColor: Colors.amber,
+        backgroundColor: Colors.orange.shade100,
       ),
       body: _prefsLoaded
           ? SingleChildScrollView(
@@ -76,7 +79,7 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 16),
-                  //*INI PRIVACY POLICY TEXTNYA NGAMBIL DARI GPT */
+                  //*PRIVACY POLICY TEXT BERSIFAT DUMMY DAN DIGENERATE OLEH CHATGPT*/
                   Text(
                     '''
 At goMeal, we are committed to protecting your privacy and ensuring your personal data is handled responsibly. This Privacy Policy explains how we collect, use, and share your information when you use our app and services.
@@ -129,7 +132,7 @@ We may update this Privacy Policy from time to time. If changes are made, we wil
                     children: [
                       ElevatedButton(
                         onPressed: () => _savePolicyStatus(true),
-                        child: Text('Accept'),
+                        child: Text('I Accept'),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.orange,
                           foregroundColor: Colors.white,
@@ -137,7 +140,7 @@ We may update this Privacy Policy from time to time. If changes are made, we wil
                       ),
                       ElevatedButton(
                         onPressed: () => _savePolicyStatus(false),
-                        child: Text('Deny'),
+                        child: Text('I Deny'),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.orange,
                           foregroundColor: Colors.white,
