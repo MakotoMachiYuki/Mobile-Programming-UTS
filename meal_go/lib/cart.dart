@@ -20,7 +20,7 @@ class CartPage extends StatelessWidget {
         backgroundColor: Colors.orange.shade100,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(CupertinoIcons.back, color: Colors.orange),
+          icon: const Icon(CupertinoIcons.back, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -29,7 +29,7 @@ class CartPage extends StatelessWidget {
           "My Cart",
           style: TextStyle(
             color: Colors.black,
-            fontSize: 25,
+            fontSize: 20,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -42,7 +42,8 @@ class CartPage extends StatelessWidget {
               Expanded(
                 child: cart.food.isEmpty ? EmptyCart() : FoodList(cart: cart),
               ),
-              if (!cart.food.isEmpty) const Divider(height: 4, color: Colors.black),
+              if (!cart.food.isEmpty)
+                const Divider(height: 4, color: Colors.black),
               if (!cart.food.isEmpty)
                 TotalPayment(
                   cart: cart,
@@ -214,7 +215,8 @@ class TotalPayment extends StatelessWidget {
   // final MenuCatalogModel menuCatalog;
   final RestaurantListModel restaurant;
 
-  const TotalPayment({Key? key, required this.restaurant, required this.cart}) : super(key: key);
+  const TotalPayment({Key? key, required this.restaurant, required this.cart})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -271,7 +273,8 @@ class TotalPayment extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => OrderPlacedPage(restaurant: restaurant, cart: cart),
+                          builder: (context) => OrderPlacedPage(
+                              restaurant: restaurant, cart: cart),
                         ),
                       );
                     },

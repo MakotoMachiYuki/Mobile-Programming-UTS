@@ -49,16 +49,16 @@ class _SearchFoodState extends State<SearchFood> {
         backgroundColor: Colors.orange.shade100,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(CupertinoIcons.back, color: Colors.orange),
+          icon: const Icon(CupertinoIcons.back, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
         title: const Text(
-          "Meal Go",
+          "Go Meal",
           style: TextStyle(
             color: Colors.black,
-            fontSize: 25,
+            fontSize: 20,
             fontWeight: FontWeight.bold,
           ),
         ),
