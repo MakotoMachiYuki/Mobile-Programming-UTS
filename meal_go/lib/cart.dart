@@ -230,7 +230,7 @@ class TotalPayment extends StatelessWidget {
               child: Column(
                 children: [
                   Text(
-                    'Total Patment',
+                    'Total Payment',
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -275,7 +275,7 @@ class TotalPayment extends StatelessWidget {
                         ),
                       );
                     },
-                    style: TextButton.styleFrom(foregroundColor: Colors.white),
+                    style: TextButton.styleFrom(foregroundColor: Colors.white, backgroundColor: Colors.orange),
                     child: const Text('Order Food'),
                   ),
                 ],

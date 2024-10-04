@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meal_go/home.dart';
 import 'package:meal_go/model/restaurant_list.dart';
 import 'package:meal_go/restaurant_list_screen.dart';
 import 'package:provider/provider.dart';
@@ -28,7 +29,7 @@ class AddToCart extends StatelessWidget {
             },
       style: ButtonStyle(
           backgroundColor: MaterialStateProperty.resolveWith<Color?>((state) {
-            return Colors.amber;
+            return Colors.orange;
           }),
           overlayColor: MaterialStateProperty.resolveWith<Color?>(
             (states) {
@@ -143,7 +144,7 @@ class _RestaurantHomeState extends State<RestaurantHome> {
                         width: 300,
                         height: 250,
                         decoration: BoxDecoration(
-                          color: Colors.amber,
+                          color: Colors.orange,
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Image.asset(
@@ -152,8 +153,7 @@ class _RestaurantHomeState extends State<RestaurantHome> {
                         ),
                       ),
                       const SizedBox(height: 10),
-                      const Text(
-                          'This is my description about his menu i know this is few ingredients that can make this disk'),
+                      const Text('This is my description about his menu i know this is few ingredients that can make this disk'),
                       const SizedBox(height: 10),
                       SizedBox(
                         width: double.infinity,
@@ -170,7 +170,7 @@ class _RestaurantHomeState extends State<RestaurantHome> {
                                       width: 40,
                                       height: 40,
                                       decoration: const BoxDecoration(
-                                        color: Colors.amber,
+                                        color: Colors.orange,
                                         shape: BoxShape.circle,
                                       ),
                                       child: IconButton(
@@ -198,7 +198,7 @@ class _RestaurantHomeState extends State<RestaurantHome> {
                                       width: 40,
                                       height: 40,
                                       decoration: const BoxDecoration(
-                                        color: Colors.amber,
+                                        color: Colors.orange,
                                         shape: BoxShape.circle,
                                       ),
                                       child: IconButton(
@@ -308,17 +308,7 @@ class _RestaurantHomeState extends State<RestaurantHome> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFFFFA500),
-        leading: !activeSearch
-            ? IconButton(
-                padding: EdgeInsets.all(8),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                iconSize: 20,
-                icon: Icon(Icons.arrow_back_ios_new),
-              )
-            : null,
+        backgroundColor: Colors.orange[100],
         title: activeSearch
             ? TextField(
                 decoration: InputDecoration(
@@ -333,12 +323,13 @@ class _RestaurantHomeState extends State<RestaurantHome> {
               )
             : Text(
                 widget.restaurant.name,
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
         actions: [
           IconButton(
             onPressed: toggleSearch,
             iconSize: 25,
+            color: Colors.black,
             icon: Icon(Icons.search),
           ),
           SizedBox(width: 15),
@@ -373,7 +364,7 @@ class _RestaurantHomeState extends State<RestaurantHome> {
                       width: MediaQuery.of(context).size.width * 0.95,
                       height: 150,
                       decoration: BoxDecoration(
-                        color: Colors.amber,
+                        color: Colors.orange,
                         borderRadius: BorderRadius.circular(20),
                         boxShadow: [
                           BoxShadow(
@@ -506,16 +497,18 @@ class _RestaurantHomeState extends State<RestaurantHome> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
-          ),
-          BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart),
             label: 'Cart',
           ),
         ],
         onTap: (index) {
-          if (index == 2) {
+          if (index == 0) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => HomePage()),
+            );
+          }
+          if (index == 1) {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => CartPage(restaurant: widget.restaurant)),
