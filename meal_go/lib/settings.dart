@@ -72,7 +72,7 @@ class _SettingsState extends State<Settings> {
         ),
         title: Text(
           'Go Meal',
-          style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
         toolbarHeight: 44,

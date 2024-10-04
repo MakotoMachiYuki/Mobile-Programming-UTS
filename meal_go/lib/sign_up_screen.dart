@@ -78,7 +78,8 @@ class _SignUpState extends State<SignUp> {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
-        title: const Text('Sign Up'),
+        title: const Text('Sign Up',
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
         backgroundColor: Colors.orange.shade100,
         leading: IconButton(
           icon: const Icon(CupertinoIcons.back, color: Colors.black),

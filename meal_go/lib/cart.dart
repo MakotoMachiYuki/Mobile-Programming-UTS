@@ -20,7 +20,7 @@ class CartPage extends StatelessWidget {
         backgroundColor: Colors.orange.shade100,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(CupertinoIcons.back, color: Colors.orange),
+          icon: const Icon(CupertinoIcons.back, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -29,7 +29,7 @@ class CartPage extends StatelessWidget {
           "My Cart",
           style: TextStyle(
             color: Colors.black,
-            fontSize: 25,
+            fontSize: 20,
             fontWeight: FontWeight.bold,
           ),
         ),

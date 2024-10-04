@@ -31,16 +31,14 @@ class _RestaurantListState extends State<RestaurantList> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.orange.shade100,
-        leading: !activeSearch
-            ? IconButton(
-                padding: const EdgeInsets.all(8),
-                onPressed: () {
-                  Navigator.pushNamed(context, '/backtohomepage');
-                },
-                iconSize: 20,
-                icon: const Icon(CupertinoIcons.back, color: Colors.black),
-              )
-            : null,
+        leading: IconButton(
+          padding: const EdgeInsets.all(8),
+          onPressed: () {
+            Navigator.pushNamed(context, '/backtohomepage');
+          },
+          iconSize: 20,
+          icon: const Icon(CupertinoIcons.back, color: Colors.black),
+        ),
         title: activeSearch
             ? TextField(
                 controller: searching,
@@ -57,7 +55,7 @@ class _RestaurantListState extends State<RestaurantList> {
               )
             : const Text(
                 'Restaurants',
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
         actions: [
           IconButton(
@@ -139,7 +137,7 @@ class _RestaurantListState extends State<RestaurantList> {
                                   ),
                                   const SizedBox(height: 5),
                                   Text(
-                                    'This is a random text that stores some useful information.',
+                                    restaurant.description,
                                     style: TextStyle(
                                       color: Colors.black,
                                       fontSize: screenHeight * 0.02,
