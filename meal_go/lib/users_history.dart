@@ -8,15 +8,16 @@ class OrderHistory extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.orange.shade100,
         elevation: 0,
         centerTitle: true,
         title: const Text(
           'Order History',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(
+              color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
         ),
         leading: IconButton(
-          icon: const Icon(CupertinoIcons.back, color: Colors.blue),
+          icon: const Icon(CupertinoIcons.back, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
           },
