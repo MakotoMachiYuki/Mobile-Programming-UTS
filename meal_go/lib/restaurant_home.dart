@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meal_go/home.dart';
 import 'package:meal_go/model/restaurant_list.dart';
 import 'package:provider/provider.dart';
 import 'cart.dart';
@@ -26,8 +27,8 @@ class AddToCart extends StatelessWidget {
               cart.add(food, totalFood);
             },
       style: ButtonStyle(
-          backgroundColor: WidgetStateProperty.resolveWith<Color?>((state) {
-            return Colors.amber;
+          backgroundColor: MaterialStateProperty.resolveWith<Color?>((state) {
+            return Colors.orange;
           }),
           overlayColor: WidgetStateProperty.resolveWith<Color?>(
             (states) {
@@ -145,7 +146,7 @@ class _RestaurantHomeState extends State<RestaurantHome> {
                         width: 300,
                         height: 250,
                         decoration: BoxDecoration(
-                          color: Colors.amber,
+                          color: Colors.orange,
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Image.asset(
@@ -172,7 +173,7 @@ class _RestaurantHomeState extends State<RestaurantHome> {
                                       width: 40,
                                       height: 40,
                                       decoration: const BoxDecoration(
-                                        color: Colors.amber,
+                                        color: Colors.orange,
                                         shape: BoxShape.circle,
                                       ),
                                       child: IconButton(
@@ -203,7 +204,7 @@ class _RestaurantHomeState extends State<RestaurantHome> {
                                       width: 40,
                                       height: 40,
                                       decoration: const BoxDecoration(
-                                        color: Colors.amber,
+                                        color: Colors.orange,
                                         shape: BoxShape.circle,
                                       ),
                                       child: IconButton(
@@ -317,17 +318,7 @@ class _RestaurantHomeState extends State<RestaurantHome> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFFFFA500),
-        leading: !activeSearch
-            ? IconButton(
-                padding: const EdgeInsets.all(8),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                iconSize: 20,
-                icon: const Icon(Icons.arrow_back_ios_new),
-              )
-            : null,
+        backgroundColor: Colors.orange[100],
         title: activeSearch
             ? TextField(
                 decoration: InputDecoration(
@@ -338,18 +329,19 @@ class _RestaurantHomeState extends State<RestaurantHome> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   contentPadding:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                      EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                 ),
               )
             : Text(
                 widget.restaurant.name,
-                style: const TextStyle(fontSize: 20),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
         actions: [
           IconButton(
             onPressed: toggleSearch,
             iconSize: 25,
-            icon: const Icon(Icons.search),
+            color: Colors.black,
+            icon: Icon(Icons.search),
           ),
           const SizedBox(width: 15),
         ],
@@ -379,12 +371,12 @@ class _RestaurantHomeState extends State<RestaurantHome> {
                     left: MediaQuery.of(context).size.width * 0.025,
                     bottom: 0,
                     child: Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 15),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                       width: MediaQuery.of(context).size.width * 0.95,
                       height: 150,
                       decoration: BoxDecoration(
-                        color: Colors.amber,
+                        color: Colors.orange,
                         borderRadius: BorderRadius.circular(20),
                         boxShadow: [
                           BoxShadow(
