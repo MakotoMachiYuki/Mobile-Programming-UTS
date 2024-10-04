@@ -32,7 +32,7 @@ class _SignUpState extends State<SignUp> {
   final nameValidator = ValidationBuilder()
       .minLength(3, 'Name must be at least 3 characters')
       .maxLength(30, 'name must not be over 30 characters')
-      .regExp(RegExp(r'^[a-zA-Z]+$'), 'Name only contain letter')
+      .regExp(RegExp(r'^[a-zA-Z\s]+$'), 'Name only contain letter')
       .build();
 
   final emailValidator =
