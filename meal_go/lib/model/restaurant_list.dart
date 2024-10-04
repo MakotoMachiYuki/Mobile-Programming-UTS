@@ -2,6 +2,7 @@ class RestaurantListModel {
   final int id;
   final String name;
   final String image;
+  final String description;
   final double latitude;
   final double longitude;
 
@@ -9,6 +10,7 @@ class RestaurantListModel {
     this.id,
     this.name,
     this.image,
+    this.description,
     this.latitude,
     this.longitude,
   );
